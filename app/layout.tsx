@@ -1,16 +1,37 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import BodyLines from "@/components/shared/BodyLines";
+import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const clashDisplay = localFont({
+  src: [
+    {
+      path: "../public/fonts/clash-display/ClashDisplay-Variable.woff2",
+      weight: "100 900",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/clash-display/ClashDisplay-Variable.woff",
+      weight: "100 900",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/clash-display/ClashDisplay-Variable.ttf",
+      weight: "100 900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-clash-display",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
   subsets: ["latin"],
+  weight: ["300", "400", "600", "700"],
+  variable: "--font-inter",
 });
+
+console.log(inter.variable);
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,9 +46,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${clashDisplay.variable} ${inter.variable} antialiased relative overflow-x-hidden dark`}
       >
-        {children}
+        <BodyLines cols={4} />
+        <main className="relative">{children}</main>
       </body>
     </html>
   );
