@@ -3,10 +3,9 @@ import Services from "@/components/home/Services";
 import Stats from "@/components/home/Stats";
 import React from "react";
 
-async function Home() {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+function Home() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Hero />
       <Stats />
       <Services />

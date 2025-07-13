@@ -34,8 +34,6 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-console.log(inter.variable);
-
 export const metadata: Metadata = {
   title: "Level up",
   description: "Your Brand Deserves Reels That Win",
