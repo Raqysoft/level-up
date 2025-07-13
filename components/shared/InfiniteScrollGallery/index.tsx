@@ -1,23 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Play } from "lucide-react";
+import PlayBtn from "./play-btn";
+import Image from "next/image";
 
 const images1 = [
-  "/placeholder.svg?height=300&width=250",
-  "/placeholder.svg?height=400&width=250",
-  "/placeholder.svg?height=350&width=250",
-  "/placeholder.svg?height=320&width=250",
-  "/placeholder.svg?height=380&width=250",
-  "/placeholder.svg?height=300&width=250",
+  "/images/speakers/speaker-4.png",
+  "/images/speakers/speaker-2.png",
+  "/images/speakers/speaker-5.png",
+  "/images/speakers/speaker-1.png",
+  "/images/speakers/speaker-6.png",
+  "/images/speakers/speaker-3.png",
 ];
 
 const images2 = [
-  "/placeholder.svg?height=360&width=250",
-  "/placeholder.svg?height=320&width=250",
-  "/placeholder.svg?height=400&width=250",
-  "/placeholder.svg?height=280&width=250",
-  "/placeholder.svg?height=350&width=250",
-  "/placeholder.svg?height=330&width=250",
+  "/images/speakers/speaker-5.png",
+  "/images/speakers/speaker-6.png",
+  "/images/speakers/speaker-3.png",
+  "/images/speakers/speaker-2.png",
+  "/images/speakers/speaker-1.png",
+  "/images/speakers/speaker-4.png",
 ];
 
 export default function InfiniteScrollGallery() {
@@ -26,21 +29,21 @@ export default function InfiniteScrollGallery() {
   const column2Height = (images2.length - 1) * 450;
 
   return (
-    <div className="h-full flex gap-4 md:gap-6 lg:gap-8 justify-center max-w-6xl mx-auto">
+    <div className="h-full flex gap-4 md:gap-6 justify-center max-w-6xl mx-auto">
       {/* First Column */}
-      <div className="flex-1 max-w-xs relative h-full overflow-hidden">
+      <div className="flex-1 min-w-16 relative h-full overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, y: 800, x: 800 }}
+          initial={{ opacity: 0, y: 400, x: 400 }}
           animate={{ opacity: 1, y: 0, x: 0 }}
-          transition={{ duration: 2, delay: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 1, delay: 0.3, ease: "easeInOut" }}
         >
           <motion.div
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-4 "
             animate={{
               y: [-column1Height, 0],
             }}
             transition={{
-              duration: 25,
+              duration: 40,
               repeat: Number.POSITIVE_INFINITY,
               ease: "linear",
             }}
@@ -49,19 +52,37 @@ export default function InfiniteScrollGallery() {
             {images1.map((src, index) => (
               <motion.div
                 key={`first-${index}`}
-                className="w-full h-[450px] relative overflow-hidden rounded-lg shadow-lg bg-primary"
+                className="flex-center w-full h-[450px] relative overflow-hidden rounded-xl shadow-lg bg-zinc-900 border border-primary/50 "
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-              ></motion.div>
+              >
+                <Image
+                  src={src}
+                  alt={`speaker-${index + 1}`}
+                  className="object-cover"
+                  fill
+                  priority
+                />
+                <PlayBtn />
+              </motion.div>
             ))}
 
             {images1.map((src, index) => (
               <motion.div
                 key={`first-${index}`}
-                className="w-full h-[450px] relative overflow-hidden rounded-lg shadow-lg bg-primary/80"
+                className="flex-center w-full h-[450px] relative overflow-hidden rounded-xl shadow-lg bg-zinc-900 border border-primary/50"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-              ></motion.div>
+              >
+                <Image
+                  src={src}
+                  alt={`speaker-${index + 1}`}
+                  className="object-cover"
+                  fill
+                  priority
+                />
+                <PlayBtn />
+              </motion.div>
             ))}
           </motion.div>
         </motion.div>
@@ -70,10 +91,10 @@ export default function InfiniteScrollGallery() {
       {/* Second Column - Offset Animation */}
 
       <motion.div
-        initial={{ opacity: 0, y: 400, x: 400 }}
+        initial={{ opacity: 0, y: 200, x: 100 }}
         animate={{ opacity: 1, y: 0, x: 0 }}
-        transition={{ duration: 2, ease: "easeInOut" }}
-        className="flex-1 max-w-xs relative h-full overflow-hidden"
+        transition={{ duration: 1, ease: "easeInOut" }}
+        className="flex-1 min-w-16 relative h-full overflow-hidden"
       >
         <motion.div
           className="flex flex-col gap-4"
@@ -81,7 +102,7 @@ export default function InfiniteScrollGallery() {
             y: [-column2Height, 0],
           }}
           transition={{
-            duration: 10,
+            duration: 35,
             repeat: Number.POSITIVE_INFINITY,
             ease: "linear",
           }}
@@ -90,19 +111,37 @@ export default function InfiniteScrollGallery() {
           {images1.map((src, index) => (
             <motion.div
               key={`first-${index}`}
-              className="w-full h-[450px] relative overflow-hidden rounded-lg shadow-lg bg-primary"
+              className="w-full h-[450px] flex-center relative overflow-hidden rounded-xl shadow-lg bg-zinc-900 border border-primary/50"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
-            ></motion.div>
+            >
+              <Image
+                src={src}
+                alt={`speaker-${index + 1}`}
+                className="object-cover"
+                fill
+                priority
+              />
+              <PlayBtn />
+            </motion.div>
           ))}
 
           {images1.map((src, index) => (
             <motion.div
               key={`first-${index}`}
-              className="w-full h-[450px] relative overflow-hidden rounded-lg shadow-lg bg-primary/80"
+              className="w-full h-[450px] flex-center relative overflow-hidden rounded-xl shadow-lg bg-zinc-900 border border-primary/50"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
-            ></motion.div>
+            >
+              <Image
+                src={src}
+                alt={`speaker-${index + 1}`}
+                className="object-cover"
+                fill
+                priority
+              />
+              <PlayBtn />
+            </motion.div>
           ))}
         </motion.div>
       </motion.div>
