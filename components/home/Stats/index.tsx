@@ -44,7 +44,7 @@ function Stats() {
     >
       <motion.div
         layout
-        className="rounded-3xl bg-foreground text-background flex flex-col justify-center gap-16 overflow-hidden py-12 px-4"
+        className="rounded-3xl bg-foreground flex flex-col justify-center gap-16 overflow-hidden py-12 px-4"
       >
         {/* Images */}
         <motion.div layout className="flex-1 flex-center gap-4">
@@ -83,7 +83,7 @@ function Stats() {
                 }}
                 className="group relative mx-4"
               >
-                <div className="absolute-center bg-primary/40 w-[110%] h-[85%] group-hover:size-full rounded-xl group-hover:rounded-2xl duration-300"></div>
+                <div className="absolute-center bg-primary/40 w-[110%] h-[85%] group-hover:size-[90%] rounded-xl group-hover:rounded-3xl duration-300"></div>
                 <ReelCard
                   speaker={4}
                   className="h-[450px] min-w-72 sm:min-w-80 bg-primary/50 rounded-3xl shadow-primary border-2 border-white hover:scale-100"
@@ -115,7 +115,7 @@ function Stats() {
         </motion.div>
 
         {/* Text */}
-        <div className="flex-center flex-wrap gap-20">
+        <div className="flex-center text-background flex-wrap gap-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}

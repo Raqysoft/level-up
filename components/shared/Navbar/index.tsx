@@ -47,8 +47,8 @@ function Navbar() {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       className={cn(
-        "fixed z-50 px-4 py-2 rounded-full left-1/2 border bg-black/10 border-white/20 backdrop-blur-md -translate-x-1/2 duration-300",
-        isScrolled ? "top-4" : "top-2"
+        "fixed z-50 px-4 py-2 rounded-full left-1/2 -translate-x-1/2 duration-300",
+        isScrolled ? "top-4 border bg-black/10 border-white/20 backdrop-blur-md" : "top-2"
       )}
     >
       <motion.div

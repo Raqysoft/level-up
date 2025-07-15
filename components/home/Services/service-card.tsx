@@ -14,7 +14,7 @@ function ServiceCard({
   svg: string;
 }) {
   return (
-    <div className="group relative overflow-hidden bg-zinc-900 rounded-3xl h-[450px] duration-500 hover:mt-4">
+    <div className="group relative overflow-hidden bg-zinc-900 rounded-3xl h-[450px] duration-500 hover:translate-y-4">
       <div
         className="
       bg-secondary absolute duration-500
