@@ -1,27 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
-import PlayBtn from "./play-btn";
 import Image from "next/image";
+import ReelCard from "../ReelCard";
 
-const images1 = [
-  "/images/speakers/speaker-4.png",
-  "/images/speakers/speaker-2.png",
-  "/images/speakers/speaker-5.png",
-  "/images/speakers/speaker-1.png",
-  "/images/speakers/speaker-6.png",
-  "/images/speakers/speaker-3.png",
-];
-
-const images2 = [
-  "/images/speakers/speaker-5.png",
-  "/images/speakers/speaker-6.png",
-  "/images/speakers/speaker-3.png",
-  "/images/speakers/speaker-2.png",
-  "/images/speakers/speaker-1.png",
-  "/images/speakers/speaker-4.png",
-];
+const images1 = [4, 2, 5, 1, 6, 3];
+const images2 = [5, 6, 3, 2, 1, 4];
 
 export default function InfiniteScrollGallery() {
   // Calculate total height of each column for seamless looping
@@ -48,48 +32,14 @@ export default function InfiniteScrollGallery() {
               ease: "linear",
             }}
           >
-            {/* First set of images */}
-            {images1.map((src, index) => (
-              <motion.div
-                key={`first-${index}`}
-                className="flex-center w-full h-[450px] relative overflow-hidden rounded-xl shadow-lg bg-zinc-900 border border-primary/50 "
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src={src}
-                  alt={`speaker-${index + 1}`}
-                  className="object-cover"
-                  fill
-                  priority
-                />
-                <PlayBtn />
-              </motion.div>
-            ))}
-
-            {images1.map((src, index) => (
-              <motion.div
-                key={`first-${index}`}
-                className="flex-center w-full h-[450px] relative overflow-hidden rounded-xl shadow-lg bg-zinc-900 border border-primary/50"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src={src}
-                  alt={`speaker-${index + 1}`}
-                  className="object-cover"
-                  fill
-                  priority
-                />
-                <PlayBtn />
-              </motion.div>
+            {[...images1, ...images1].map((item, ix) => (
+              <ReelCard speaker={item} key={ix} />
             ))}
           </motion.div>
         </motion.div>
       </div>
 
       {/* Second Column - Offset Animation */}
-
       <motion.div
         initial={{ opacity: 0, y: 200, x: 100 }}
         animate={{ opacity: 1, y: 0, x: 0 }}
@@ -107,41 +57,8 @@ export default function InfiniteScrollGallery() {
             ease: "linear",
           }}
         >
-          {/* First set of images */}
-          {images1.map((src, index) => (
-            <motion.div
-              key={`first-${index}`}
-              className="w-full h-[450px] flex-center relative overflow-hidden rounded-xl shadow-lg bg-zinc-900 border border-primary/50"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Image
-                src={src}
-                alt={`speaker-${index + 1}`}
-                className="object-cover"
-                fill
-                priority
-              />
-              <PlayBtn />
-            </motion.div>
-          ))}
-
-          {images1.map((src, index) => (
-            <motion.div
-              key={`first-${index}`}
-              className="w-full h-[450px] flex-center relative overflow-hidden rounded-xl shadow-lg bg-zinc-900 border border-primary/50"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Image
-                src={src}
-                alt={`speaker-${index + 1}`}
-                className="object-cover"
-                fill
-                priority
-              />
-              <PlayBtn />
-            </motion.div>
+          {[...images2, ...images2].map((item, ix) => (
+            <ReelCard speaker={item} key={ix} />
           ))}
         </motion.div>
       </motion.div>

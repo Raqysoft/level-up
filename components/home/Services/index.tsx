@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 function Services() {
   return (
-    <div className="py-20">
+    <div className="py-16">
       <div className="container space-y-12 md:space-y-20">
         <SectionHeader h2="our services" p="what we do" />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 xl:gap-12">

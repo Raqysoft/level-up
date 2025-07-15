@@ -11,17 +11,17 @@ const clashDisplay = localFont({
   src: [
     {
       path: "../public/fonts/clash-display/ClashDisplay-Variable.woff2",
-      weight: "100 900",
+      weight: "100 700",
       style: "normal",
     },
     {
       path: "../public/fonts/clash-display/ClashDisplay-Variable.woff",
-      weight: "100 900",
+      weight: "100 700",
       style: "normal",
     },
     {
       path: "../public/fonts/clash-display/ClashDisplay-Variable.ttf",
-      weight: "100 900",
+      weight: "100 700",
       style: "normal",
     },
   ],
