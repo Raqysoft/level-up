@@ -7,16 +7,16 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const rotationStyling = [
-  "rotate-[-6deg] translate-x-12",
-  "rotate-[6deg] translate-y-6 translate-y-4",
-  "rotate-[-10deg] translate-x-14 -translate-y-2",
-  "rotate-[9deg] -translate-x-12 translate-y-4",
+  "rotate-[-6deg] sm:translate-x-12",
+  "rotate-[6deg] sm:translate-y-4",
+  "rotate-[-10deg] sm:translate-x-14 -translate-y-2",
+  "rotate-[9deg] sm:-translate-x-12 translate-y-4",
 ];
 
 function Process() {
   const [hoveredIx, setHoverIx] = useState<null | number>(null);
   return (
-    <div className="py-16">
+    <div className="pt-28 pb-32">
       <div className="container space-y-12 md:space-y-20">
         <SectionHeader h2="our process" p="our process" />
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2">

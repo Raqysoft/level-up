@@ -48,7 +48,9 @@ function Navbar() {
       animate={{ y: 0 }}
       className={cn(
         "fixed z-50 px-4 py-2 rounded-full left-1/2 -translate-x-1/2 duration-300",
-        isScrolled ? "top-4 border bg-black/10 border-white/20 backdrop-blur-md" : "top-2"
+        isScrolled
+          ? "top-4 border bg-black/10 border-white/20 backdrop-blur-md"
+          : "top-2"
       )}
     >
       <motion.div
@@ -63,7 +65,7 @@ function Navbar() {
             alt="level-up"
             width={120}
             height={120}
-            className="min-w-32"
+            className="h-8 w-32"
           />
           <div className="h-6 w-[1px] bg-primary/50"></div>
 
