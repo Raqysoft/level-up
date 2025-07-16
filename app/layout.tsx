@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/shared/Navbar";
 import { Suspense } from "react";
 import Loading from "./loading";
+import Footer from "@/components/shared/Footer";
 
 const clashDisplay = localFont({
   src: [
@@ -53,6 +54,7 @@ export default function RootLayout({
           <Navbar />
           <BodyLines cols={4} />
           <main className="relative">{children}</main>
+          <Footer />
         </Suspense>
       </body>
     </html>

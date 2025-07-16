@@ -59,15 +59,12 @@ function Navbar() {
           scrollDir === "up" ? "gap-4 md:gap-6 lg:gap-40" : "gap-4 md:gap-6"
         )}
       >
-        <div className="flex-center gap-6">
-          <Image
-            src="/images/full-logo.png"
-            alt="level-up"
-            width={120}
-            height={120}
-            className="h-8 w-32"
-          />
-          <div className="h-6 w-[1px] bg-primary/50"></div>
+        <div className="flex-center gap-4">
+          <div className="relative h-8 w-[120px]">
+            <Image src="/images/full-logo.png" alt="level-up" fill />
+          </div>
+
+          <div className="h-6 w-[1px] bg-primary/50 mr-1"></div>
 
           {/* Animate nav links based on scroll direction */}
           <AnimatePresence>

@@ -13,8 +13,6 @@ function Home() {
       <Services />
       <Process />
       <Testimonials />
-      <div className="h-screen"></div>
-      <div className="h-screen"></div>
     </div>
   );
 }
