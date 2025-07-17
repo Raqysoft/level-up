@@ -20,7 +20,7 @@ function Stats() {
       const scrollPosition = window.scrollY + window.innerHeight;
 
       // Trigger when the bottom of the viewport reaches 60% of the section
-      if (scrollPosition - 250 > sectionTop + sectionHeight * 0.4) {
+      if (scrollPosition - 50 > sectionTop + sectionHeight * 0.4) {
         setIsMount(true);
         window.removeEventListener("scroll", handleScroll); // only once
       }
@@ -37,7 +37,7 @@ function Stats() {
       layout
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-300px" }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="container relative z-10 py-28"
       ref={sectionRef}
@@ -55,7 +55,7 @@ function Stats() {
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 60 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{
                 delay: 0.2 + 0.2 * ix,
                 duration: 0.5,
@@ -99,7 +99,7 @@ function Stats() {
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 60 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{
                 delay: 0.8 - 0.2 * ix,
                 duration: 0.5,
@@ -119,7 +119,7 @@ function Stats() {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-70px" }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ delay: 0.2 }}
             className="relative"
           >
@@ -137,7 +137,7 @@ function Stats() {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-70px" }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ delay: 0.4 }}
             className="relative"
           >
@@ -155,7 +155,7 @@ function Stats() {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-70px" }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ delay: 0.6 }}
             className="relative"
           >

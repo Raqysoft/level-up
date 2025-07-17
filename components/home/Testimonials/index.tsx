@@ -23,7 +23,7 @@ function Testimonials() {
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.2 }}
           className="text-center text-lg max-w-xl mx-auto mt-4 mb-12 text-background/80"
         >
           Clients don't just love us because we save them time. It's because we
@@ -34,7 +34,7 @@ function Testimonials() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-300px" }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5 }}
             className="w-full"
           >

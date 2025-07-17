@@ -9,7 +9,7 @@ interface IColData {
 
 function ReelsFootage() {
   return (
-    <div className="h-[140vh] grid grid-cols-10 grid-rows-1 gap-3">
+    <div className="min-h-[140vh] grid grid-cols-10 grid-rows-1 gap-3">
       {/* Left */}
       <FirstCol speakers={[1, 4]} delay={0} />
       <SecondCol speakers={[6, 7]} delay={0.1} />
@@ -33,20 +33,20 @@ const FirstCol = ({ speakers, delay = 0 }: IColData) => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.3, delay }}
         className="rounded-lg bg-zinc-600 row-span-3"
       >
-        <ReelCard speaker={speakers[0]} className="w-full h-full" />
+        <ReelCard speaker={speakers[0]} className="w-full h-full min-h-60" />
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: delay + 0.1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.3, delay: delay + 0.1 }}
         className="rounded-lg bg-zinc-600 row-span-3"
       >
-        <ReelCard speaker={speakers[1]} className="w-full h-full" />
+        <ReelCard speaker={speakers[1]} className="w-full h-full min-h-60" />
       </motion.div>
     </div>
   );
@@ -59,20 +59,20 @@ const SecondCol = ({ speakers, delay = 0 }: IColData) => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.3, delay }}
         className="rounded-lg bg-zinc-600 row-span-3"
       >
-        <ReelCard speaker={speakers[0]} className="w-full h-full" />
+        <ReelCard speaker={speakers[0]} className="w-full h-full min-h-60" />
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: delay + 0.1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.3, delay: delay + 0.1 }}
         className="rounded-lg bg-zinc-600 row-span-3"
       >
-        <ReelCard speaker={speakers[1]} className="w-full h-full" />
+        <ReelCard speaker={speakers[1]} className="w-full h-full min-h-60" />
       </motion.div>
       <div />
     </div>
@@ -86,11 +86,11 @@ const ThirdCol = ({ speakers, delay = 0 }: IColData) => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.3, delay }}
         className="rounded-lg bg-zinc-600 row-span-3"
       >
-        <ReelCard speaker={speakers[0]} className="w-full h-full" />
+        <ReelCard speaker={speakers[0]} className="w-full h-full min-h-60" />
       </motion.div>
       <div className="row-span-3"></div>
     </div>
@@ -104,11 +104,11 @@ const FourthCol = ({ speakers, delay = 0 }: IColData) => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.3, delay }}
         className="rounded-lg bg-zinc-600 row-span-3"
       >
-        <ReelCard speaker={speakers[0]} className="w-full h-full" />
+        <ReelCard speaker={speakers[0]} className="w-full h-full min-h-60" />
       </motion.div>
       <div className="row-span-4"></div>
     </div>
@@ -117,16 +117,16 @@ const FourthCol = ({ speakers, delay = 0 }: IColData) => {
 
 const FifthCol = ({ speakers, delay = 0 }: IColData) => {
   return (
-    <div className="grid grid-rows-10 gap-3">
+    <div className="h-full grid grid-rows-10 gap-3">
       <div className="row-span-4"></div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.3, delay }}
         className="rounded-lg bg-zinc-600 row-span-3"
       >
-        <ReelCard speaker={speakers[0]} className="w-full h-full" />
+        <ReelCard speaker={speakers[0]} className="w-full h-full min-h-60" />
       </motion.div>
       <div className="row-span-3"></div>
     </div>

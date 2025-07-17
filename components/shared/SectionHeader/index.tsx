@@ -26,7 +26,7 @@ function SectionHeader({
         <motion.h2
           initial={{ opacity: 0, y: 90 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.2 }}
           className={cn(
             "capitalize text-2xl flex-center gap-2 sm:gap-3",
             light ? "text-background/80" : "text-foreground/80 font-light"
@@ -40,7 +40,7 @@ function SectionHeader({
         <motion.p
           initial={{ opacity: 0, y: 90 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ delay: 0.2 }}
           className={cn(
             "font-clash-display flex-center gap-2 sm:gap-3 text-4xl md:text-5xl lg:text-7xl flex-center capitalize",

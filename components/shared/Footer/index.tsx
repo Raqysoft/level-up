@@ -20,7 +20,8 @@ function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             className="text-center mb-8"
           >
             <div className="flex flex-col items-center justify-center mb-6">
@@ -51,7 +52,8 @@ function Footer() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+          viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-8 mb-12 border-t border-zinc-800 pt-12"
         >
           <div>
@@ -163,7 +165,8 @@ function Footer() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+          viewport={{ once: true, amount: 0.1 }}
           className="flex flex-col md:flex-row justify-between items-center border-t border-zinc-800 pt-8"
         >
           <div className="mb-4 md:mb-0">

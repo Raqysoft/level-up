@@ -24,7 +24,7 @@ function Process() {
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-300px" }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ delay: ix * 0.2, duration: 0.2 }}
               key={ix}
               onMouseEnter={() => setHoverIx(ix)}

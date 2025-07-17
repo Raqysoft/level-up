@@ -16,7 +16,7 @@ function Work() {
               <motion.h2
                 initial={{ opacity: 0, y: 90 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, amount: 0.1 }}
                 className="capitalize text-2xl font-clash-display font-light text-foreground/80 flex-center tracking-wider mb-4"
               >
                 // Our Work
@@ -24,7 +24,7 @@ function Work() {
               <motion.p
                 initial={{ opacity: 0, y: 90 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ delay: 0.2 }}
                 className="text-4xl md:text-7xl max-w-xl font-clash-display mb-2 flex-center flex-wrap gap-x-2"
               >
@@ -44,7 +44,7 @@ function Work() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="w-full max-w-4xl mx-auto grid grid-cols-3 gap-12"
+          className="w-[80%] max-w-4xl mx-auto grid md:grid-cols-3 gap-4 md:gap-12"
         >
           {[
             "Content Strategy",
@@ -54,7 +54,7 @@ function Work() {
             <div
               key={index}
               onClick={() => setActiveTab(index)}
-              className="flex flex-col items-center cursor-pointer"
+              className="flex flex-col items-center text-center cursor-pointer"
             >
               <span
                 className={`text- font-medium transition-colors ${
