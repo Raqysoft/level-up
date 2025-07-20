@@ -17,9 +17,9 @@ function ReelsGrid() {
             <motion.div
               key={ix}
               initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0 }}
-              transition={{ delay: 0.2 * ix }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              // transition={{ delay: 0.2 * ix }}
             >
               <ReelCard speaker={Math.ceil(Math.random() * 8)} />
             </motion.div>

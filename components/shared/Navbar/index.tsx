@@ -20,7 +20,8 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollDir, setScrollDir] = useState<"up" | "down">("up");
 
-  const isActive = (href: string) => pathname.startsWith(href);
+  const isActive = (href: string) =>
+    href === pathname || (pathname.startsWith(href) && href !== "/");
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
