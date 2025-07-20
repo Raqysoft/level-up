@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import ReusableSlider from "@/components/shared/ReusableSlider";
 import { SwiperSlide } from "swiper/react";
 import ReelCard from "@/components/shared/ReelCard";
+import CategoryTabs from "@/components/shared/CategoryTabs";
 
 function Work() {
-  const [activeTab, setActiveTab] = useState(0);
   return (
     <div className="pt-32 pb-20">
       <div className="container">
@@ -39,38 +39,7 @@ function Work() {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="w-[80%] max-w-4xl mx-auto grid md:grid-cols-3 gap-4 md:gap-12"
-        >
-          {[
-            "Content Strategy",
-            "Editing & Effects",
-            "Performance Tracking",
-          ].map((tab, index) => (
-            <div
-              key={index}
-              onClick={() => setActiveTab(index)}
-              className="flex flex-col items-center text-center cursor-pointer"
-            >
-              <span
-                className={`text- font-medium transition-colors ${
-                  activeTab === index ? "text-[#D4FF00]" : "text-gray-400"
-                }`}
-              >
-                {tab}
-              </span>
-              <div
-                className={`mt-2 w-[115%] transition-colors duration-300 ${
-                  activeTab === index ? "h-1 bg-[#D4FF00]" : "h-0.5 bg-gray-800"
-                }`}
-              />
-            </div>
-          ))}
-        </motion.div>
+        <CategoryTabs />
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
