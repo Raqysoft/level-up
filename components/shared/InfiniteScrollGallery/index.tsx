@@ -7,7 +7,11 @@ import ReelCard from "../ReelCard";
 const images1 = [4, 2, 5, 1, 6, 3];
 const images2 = [5, 6, 3, 2, 1, 4];
 
-export default function InfiniteScrollGallery() {
+export default function InfiniteScrollGallery({
+  inverseScale = false,
+}: {
+  inverseScale?: boolean;
+}) {
   // Calculate total height of each column for seamless looping
   const column1Height = images1.length * 450; // Approximate height per image including gap
   const column2Height = (images2.length - 1) * 450;
@@ -33,7 +37,11 @@ export default function InfiniteScrollGallery() {
             }}
           >
             {[...images1, ...images1].map((item, ix) => (
-              <ReelCard speaker={item} key={ix} />
+              <ReelCard
+                className={inverseScale ? "hover:scale-95" : ""}
+                speaker={item}
+                key={ix}
+              />
             ))}
           </motion.div>
         </motion.div>
@@ -58,7 +66,11 @@ export default function InfiniteScrollGallery() {
           }}
         >
           {[...images2, ...images2].map((item, ix) => (
-            <ReelCard speaker={item} key={ix} />
+            <ReelCard
+              className={inverseScale ? "hover:scale-95" : ""}
+              speaker={item}
+              key={ix}
+            />
           ))}
         </motion.div>
       </motion.div>

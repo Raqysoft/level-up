@@ -18,13 +18,14 @@ function HomeHero() {
             initial={{ opacity: 0, rotate: -45, x: 40 }}
             animate={{ opacity: 1, rotate: -12, x: 0 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="absolute z-10 -top-[450px] -left-[400px]"
+            className="absolute z-10 -top-[450px] -left-[400px] pointer-events-none"
           >
             <Image
               src={"/images/home/hero-gradient.png"}
               alt="hero-bg"
               width={1500}
               height={1500}
+              className="pointer-events-none"
             />
           </motion.div>
           <div className="w-full lg:w-1/2 space-y-8 mt-12 z-10">
@@ -101,7 +102,7 @@ function HomeHero() {
           </div>
 
           <div className="absolute w-full md:w-1/2 h-[150%] -rotate-[20deg] -right-72 md:-right-40 -top-40">
-            <InfiniteScrollGallery />
+            <InfiniteScrollGallery inverseScale />
           </div>
         </div>
       </div>
