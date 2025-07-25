@@ -4,7 +4,7 @@ import React from "react";
 
 function Portfolio() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Hero />
       <ReelsGrid />
     </div>
