@@ -28,7 +28,7 @@ function SectionHeader({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           className={cn(
-            "capitalize text-2xl flex-center gap-2 sm:gap-3",
+            "capitalize text-2xl flex-center flex-wrap gap-2 sm:gap-3",
             light ? "text-background/80" : "text-foreground/80 font-light"
           )}
         >

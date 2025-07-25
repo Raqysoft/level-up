@@ -15,7 +15,7 @@ const ReelsCols = ({ reels }: { reels: number[] }) => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
       >
-        <ReelCard speaker={r} />
+        <ReelCard speaker={r} className="hover:scale-95" />
       </motion.div>
     ))}
   </div>
@@ -27,7 +27,7 @@ function WorkSamples() {
       <SectionHeader h2="Portfolio" p="Work samples" />
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-12 w-full max-w-5xl mx-auto">
         <ReelsCols reels={[2, 6, 3, 1, 5]} />
-        <div className="pt-20">
+        <div className="lg:pt-20">
           <ReelsCols reels={[6, 1, 5, 2, 3]} />
         </div>
         <ReelsCols reels={[3, 5, 2, 6, 1]} />

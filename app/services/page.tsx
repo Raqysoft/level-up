@@ -1,3 +1,4 @@
+import { FaqAccordion } from "@/components/services/Faqs";
 import ServicesTimeline from "@/components/services/ServicesTimeline";
 import WorkSamples from "@/components/services/WorkSamples";
 import StickyTextReveal from "@/components/shared/StickyTextReveal";
@@ -16,7 +17,7 @@ export default function Home() {
       />
       <ServicesTimeline />
       <WorkSamples />
-      <div className="h-screen bg-zinc-900"></div>
+      <FaqAccordion />
     </main>
   );
 }
