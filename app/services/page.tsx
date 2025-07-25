@@ -1,3 +1,4 @@
+import WorkSamples from "@/components/services/WorkSamples";
 import StickyTextReveal from "@/components/shared/StickyTextReveal";
 
 export default function Home() {
@@ -14,9 +15,9 @@ export default function Home() {
         subtitle="Keep scrolling to reveal"
       />
 
-      <div className="h-screen bg-zinc-700"></div>
-      <div className="h-screen bg-zinc-800"></div>
       <div className="h-screen bg-zinc-900"></div>
+      <WorkSamples />
+      <div className="h-screen bg-zinc-800"></div>
     </main>
   );
 }
