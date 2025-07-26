@@ -43,7 +43,7 @@ function SectionHeader({
           viewport={{ once: true, amount: 0.2 }}
           transition={{ delay: 0.2 }}
           className={cn(
-            "font-clash-display flex-center gap-2 sm:gap-3 text-4xl md:text-5xl lg:text-7xl flex-center capitalize",
+            "font-clash-display flex-center flex-wrap gap-2 sm:gap-3 text-4xl md:text-5xl lg:text-7xl flex-center capitalize",
             light ? "text-background/40 font-medium" : "text-foreground/40"
           )}
         >

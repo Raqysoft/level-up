@@ -1,3 +1,4 @@
+import Difference from "@/components/services/Difference";
 import { FaqAccordion } from "@/components/services/Faqs";
 import ServicesTimeline from "@/components/services/ServicesTimeline";
 import WorkSamples from "@/components/services/WorkSamples";
@@ -8,7 +9,7 @@ export default function Home() {
     <main className="">
       <div className="h-screen bg-zinc-900"></div>
       <div className="h-screen bg-zinc-800"></div>
-
+      <Difference />
       {/* Sticky text reveal section */}
       <StickyTextReveal
         title="Reels Production"
@@ -16,6 +17,7 @@ export default function Home() {
         subtitle="Keep scrolling to reveal"
       />
       <ServicesTimeline />
+      <div className="h-screen bg-zinc-900"></div>
       <WorkSamples />
       <FaqAccordion />
     </main>
