@@ -5,6 +5,7 @@ import WorkSamples from "@/components/services/WorkSamples";
 import FaqAccordion from "@/components/services/Faqs";
 import StickyTextReveal from "@/components/shared/StickyTextReveal";
 import Hero from "@/components/services/Hero";
+import UseCases from "@/components/services/UseCases";
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
         subtitle="Keep scrolling to reveal"
       />
       <ServicesTimeline />
-      <div className="h-screen bg-zinc-900"></div>
+      <UseCases />
       <WorkSamples />
       <FaqAccordion />
     </>
