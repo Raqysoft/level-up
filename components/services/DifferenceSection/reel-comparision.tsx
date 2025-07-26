@@ -35,13 +35,13 @@ function ReelComparision() {
         onTouchEnd={() => setOnMouseDown(false)}
       >
         <div
-          className="bg-muted h-full w-1 absolute z-20 top-0 -ml-1 select-none"
+          className="bg-lime-300 h-full w-0.5 absolute z-20 top-0 -ml-1 select-none"
           style={{
             left: inset + "%",
           }}
         >
           <button
-            className="bg-muted rounded hover:scale-110 transition-all w-5 h-10 select-none -translate-y-1/2 absolute top-1/2 -ml-2 z-30 cursor-ew-resize flex justify-center items-center"
+            className="rounded hover:scale-110 transition-all w-5 h-10 select-none -translate-y-1/2 absolute top-1/2 -ml-2 z-30 cursor-ew-resize flex justify-center items-center bg-lime-300 text-black"
             onTouchStart={(e) => {
               setOnMouseDown(true);
               onMouseMove(e);

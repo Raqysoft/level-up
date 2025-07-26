@@ -1,16 +1,17 @@
-import Difference from "@/components/services/Difference";
-import { FaqAccordion } from "@/components/services/Faqs";
+import DifferenceSection from "@/components/services/DifferenceSection";
+import ServicesGrid from "@/components/services/ServicesGrid";
 import ServicesTimeline from "@/components/services/ServicesTimeline";
 import WorkSamples from "@/components/services/WorkSamples";
+import FaqAccordion from "@/components/services/Faqs";
 import StickyTextReveal from "@/components/shared/StickyTextReveal";
+import Hero from "@/components/services/Hero";
 
 export default function Home() {
   return (
-    <main className="">
-      <div className="h-screen bg-zinc-900"></div>
-      <div className="h-screen bg-zinc-800"></div>
-      <Difference />
-      {/* Sticky text reveal section */}
+    <>
+      {/* <Hero /> */}
+      <ServicesGrid />
+      <DifferenceSection />
       <StickyTextReveal
         title="Reels Production"
         text="Your brand deserves content that's fast, bold, and made to perform"
@@ -20,6 +21,6 @@ export default function Home() {
       <div className="h-screen bg-zinc-900"></div>
       <WorkSamples />
       <FaqAccordion />
-    </main>
+    </>
   );
 }

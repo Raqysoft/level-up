@@ -43,7 +43,7 @@ const faqItems = [
   },
 ];
 
-export function FaqAccordion() {
+export default function FaqAccordion() {
   return (
     <div className="container space-y-4 md:space-y-12 py-20">
       <SectionHeader p="FAQs" h2="Frequently asked questions" />
