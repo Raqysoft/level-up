@@ -3,10 +3,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import ReelCard from "@/components/shared/ReelCard";
 import Image from "next/image";
+import ScatteredReels from "./scattered-reels";
 
 function Hero() {
   return (
-    <div className="relative">
+    <div className="relative pb-32">
       <motion.div
         initial={{ opacity: 0, rotate: -6 }}
         animate={{ opacity: 1, rotate: 0 }}
@@ -28,11 +29,11 @@ function Hero() {
             transition={{ delay: 0.2 }}
             className="font-light md:text-lg max-w-xl mx-auto opacity-60"
           >
-            Transform your social media presence with our expert Reels creation
-            service. We specialize in crafting engaging, professional content
-            that elevates your brand and connects with your audience.
+            Expert Reels creation to boost your social media presence and engage
+            your audience with professional content.
           </motion.p>
         </hgroup>
+        <ScatteredReels />
       </section>
     </div>
   );

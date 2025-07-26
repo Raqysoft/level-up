@@ -9,7 +9,7 @@ import Hero from "@/components/services/Hero";
 export default function Home() {
   return (
     <>
-      {/* <Hero /> */}
+      <Hero />
       <ServicesGrid />
       <DifferenceSection />
       <StickyTextReveal
