@@ -18,7 +18,7 @@ function ProcessCard({
   return (
     <div
       className={cn(
-        "w-[105%] group bg-zinc-900 text-center flex-center flex-col gap-12 rounded-2xl h-[450px] shadow-2xl shadow-black duration-500",
+        "sm:w-[105%] group bg-zinc-900 text-center flex-center flex-col gap-12 rounded-2xl h-[450px] shadow-2xl shadow-black duration-500",
         className
       )}
     >

@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const rotationStyling = [
-  "rotate-[-6deg] sm:translate-x-12",
-  "rotate-[6deg] sm:translate-y-4",
-  "rotate-[-10deg] sm:translate-x-14 -translate-y-2",
-  "rotate-[9deg] sm:-translate-x-12 translate-y-4",
+  "sm:rotate-[-6deg] sm:translate-x-12",
+  "sm:rotate-[6deg] sm:translate-y-4",
+  "sm:rotate-[-10deg] sm:translate-x-14 sm:-translate-y-2",
+  "sm:rotate-[9deg] sm:-translate-x-12 sm:translate-y-4",
 ];
 
 function Process() {
@@ -19,7 +19,7 @@ function Process() {
     <div className="pt-28 pb-32">
       <div className="container space-y-12 md:space-y-20">
         <SectionHeader h2="our process" p="our process" />
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
           {PROCESS.map((ele, ix) => (
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -30,7 +30,7 @@ function Process() {
               onMouseEnter={() => setHoverIx(ix)}
               onMouseLeave={() => setHoverIx(null)}
               className={cn(
-                "origin-bottom duration-300",
+                "origin-bottom duration-300 ",
                 hoveredIx === ix || hoveredIx === null
                   ? "z-20 opacity-100"
                   : "!opacity-25 translate-0 scale-90",
