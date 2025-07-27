@@ -32,7 +32,7 @@ function WhatsAppPopup() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className={`fixed flex-center z-50 bottom-6 right-6 size-24 rounded-full transition-all duration-300
+      className={`fixed flex-center z-50 bottom-3 right-3 sm:bottom-6 sm:right-6 size-20 sm:size-24 rounded-full transition-all duration-300
         ${
           show
             ? "opacity-100 scale-100"
@@ -44,8 +44,8 @@ function WhatsAppPopup() {
         href="https://wa.me/+201018192961?text=Let's make something great together"
         target="_blank"
       >
-        <div className="size-20 bg-green-400/10 flex-center rounded-full">
-          <div className="size-14 bg-green-400 rounded-full flex-center">
+        <div className="size-16 sm:size-20 bg-green-400/10 flex-center rounded-full">
+          <div className="size-13 sm:size-14 bg-green-400 rounded-full flex-center">
             <Image
               src={"/svgs/whatsapp.svg"}
               alt="level-up whatsapp"
