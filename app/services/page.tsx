@@ -9,7 +9,7 @@ import UseCases from "@/components/services/UseCases";
 
 export default function Home() {
   return (
-    <>
+    <div className="overflow-x-hidden">
       <Hero />
       <ServicesGrid />
       <DifferenceSection />
@@ -22,6 +22,6 @@ export default function Home() {
       <UseCases />
       <WorkSamples />
       <FaqAccordion />
-    </>
+    </div>
   );
 }

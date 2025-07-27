@@ -8,7 +8,7 @@ export function TestimonialCard({
   testimonial: (typeof TESTIMONIALS)[0];
 }) {
   return (
-    <div className="relative bg-[#E0AAFE] backdrop-blur-md rounded-lg p-6 overflow-hidden w-[90%] md:w-[700px] flex-shrink-0 mx-3">
+    <div className="relative bg-[#E0AAFE] backdrop-blur-md rounded-lg p-6 overflow-hidden w-full flex-shrink-0 mx-3">
       <div className="flex items-center justify-center flex-col sm:flex-row gap-12">
         <div className="text-background ">
           <div className="flex items-center mb-4">

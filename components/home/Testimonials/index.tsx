@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { TESTIMONIALS } from "@/constants/testimonials";
 import { TestimonialCard } from "./testimonial-card";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+// import "swiper/css/autoplay";
 
 function Testimonials() {
   // Calculate total width for seamless looping
@@ -38,25 +42,38 @@ function Testimonials() {
             transition={{ duration: 0.5 }}
             className="w-full"
           >
-            <motion.div
-              className="flex"
-              animate={{
-                x: [-sliderWidth / 2, 0],
+            <Swiper
+              spaceBetween={20}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
               }}
-              transition={{
-                duration: 25,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear",
+              loop
+              autoplay={{
+                delay: 0,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: false,
               }}
+              speed={6000}
+              grabCursor
+              centeredSlides
+              modules={[Autoplay]}
             >
-              {/* Double the testimonials for seamless looping */}
               {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, index) => (
-                <TestimonialCard
+                <SwiperSlide
                   key={`${testimonial.id}-${index}`}
-                  testimonial={testimonial}
-                />
+                  className="w-[90vw] md:w-[700px]"
+                >
+                  <TestimonialCard testimonial={testimonial} />
+                </SwiperSlide>
               ))}
-            </motion.div>
+            </Swiper>
           </motion.div>
         </div>
       </div>

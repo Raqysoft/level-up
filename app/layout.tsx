@@ -7,6 +7,7 @@ import Navbar from "@/components/shared/Navbar";
 import { Suspense } from "react";
 import Loading from "./loading";
 import Footer from "@/components/shared/Footer";
+import WhatsAppPopup from "@/components/shared/WhatsAppPopup";
 
 const clashDisplay = localFont({
   src: [
@@ -53,7 +54,10 @@ export default function RootLayout({
         <Suspense fallback={<Loading />}>
           <Navbar />
           <BodyLines cols={4} />
-          <main className="relative">{children}</main>
+          <main className="relative">
+            {children}
+            {/* <WhatsAppPopup /> */}
+          </main>
           <Footer />
         </Suspense>
       </body>
