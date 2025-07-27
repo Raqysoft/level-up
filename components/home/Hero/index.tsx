@@ -13,7 +13,6 @@ function HomeHero() {
     <div className="relative min-h-screen">
       <div className="container relative">
         <div className="min-h-screen flex items-center">
-          <div className="absolute z-10 -right-[22%] top-[90%] w-[1200px] h-[800px] rounded-full bg-background blur-3xl"></div>
           <motion.div
             initial={{ opacity: 0, rotate: -45, x: 40 }}
             animate={{ opacity: 1, rotate: -12, x: 0 }}
@@ -101,7 +100,12 @@ function HomeHero() {
             </div>
           </div>
 
-          <div className="absolute w-full md:w-1/2 h-[150%] -rotate-[20deg] -right-72 md:-right-40 -top-40">
+          <div
+            className="absolute w-full md:w-1/2 h-[150%] -rotate-[20deg] -right-72 md:-right-40 -top-40
+         [mask-image:linear-gradient(to_bottom,black_50%,transparent_80%),linear-gradient(to_top,black_70%,transparent_100%)]
+         [mask-composite:intersect] 
+            "
+          >
             <InfiniteScrollGallery inverseScale />
           </div>
         </div>
