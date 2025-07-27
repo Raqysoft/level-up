@@ -56,7 +56,7 @@ export default function RootLayout({
           <BodyLines cols={4} />
           <main className="relative">
             {children}
-            {/* <WhatsAppPopup /> */}
+            <WhatsAppPopup />
           </main>
           <Footer />
         </Suspense>

@@ -7,6 +7,7 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 import { PARTNERS } from "@/constants/partners";
+import Link from "next/link";
 
 function HomeHero() {
   return (
@@ -64,13 +65,15 @@ function HomeHero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.3 }}
             >
-              <Button
-                dir="rtl"
-                size={"xl"}
-                icon={<ArrowRight className="size-6" />}
-              >
-                Let's talk
-              </Button>
+              <Link href={"/contact"}>
+                <Button
+                  dir="rtl"
+                  size={"xl"}
+                  icon={<ArrowRight className="size-6" />}
+                >
+                  Let's talk
+                </Button>
+              </Link>
             </motion.div>
             <div>
               <motion.p

@@ -94,10 +94,14 @@ function Navbar() {
         </div>
 
         <div className="hidden md:flex flex-center gap-2">
-          <Button variant={"outline"} icon={<ArrowRight />} dir="rtl">
-            See Our Work
-          </Button>
-          <Button>Let's Talk</Button>
+          <Link href={"/portfolio"}>
+            <Button variant={"outline"} icon={<ArrowRight />} dir="rtl">
+              See Our Work
+            </Button>
+          </Link>
+          <Link href={"/contact"}>
+            <Button>Let's Talk</Button>
+          </Link>
         </div>
 
         <div className="md:hidden">
