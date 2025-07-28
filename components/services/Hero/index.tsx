@@ -7,7 +7,7 @@ import ScatteredReels from "./scattered-reels";
 
 function Hero() {
   return (
-    <div className="relative pb-32">
+    <div className="relative pb-32 overflow-x-hidden">
       <motion.div
         initial={{ opacity: 0, rotate: -6 }}
         animate={{ opacity: 1, rotate: 0 }}

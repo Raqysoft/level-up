@@ -12,7 +12,7 @@ function ServicesGrid() {
     <section className="py-12 md:py-20">
       <div className="container">
         <SectionHeader h2="What's Included" p="What You Get" />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-12 pointer-events-none">
           {FEATURES.map((ele, ix) => (
             <motion.div
               initial={{ opacity: 0, y: 40 }}

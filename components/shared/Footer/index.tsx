@@ -65,7 +65,7 @@ function Footer() {
             />
           </div>
           {/* Solutions Column */}
-          <div>
+          {/* <div>
             <h3 className="font-medium mb-4">Solutions</h3>
             <ul className="space-y-3">
               <li>
@@ -96,10 +96,10 @@ function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Company Column */}
-          <div>
+          {/* <div>
             <h3 className="font-medium mb-4">Company</h3>
             <ul className="space-y-3">
               <li>
@@ -127,36 +127,27 @@ function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Resources Column */}
-          <div>
-            <h3 className="font-medium mb-4">Resources</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Newsletter
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Support
-                </Link>
-              </li>
+          <div className="col-span-3">
+            <h3 className="font-medium mb-4">Important links</h3>
+            <ul className="flex items-center gap-4 md:gap-8 flex-wrap">
+              {[
+                { label: "Home", href: "/" },
+                { label: "Service", href: "/services" },
+                { label: "Portfolio", href: "/portfolio" },
+                { label: "Contact", href: "/contact" },
+              ].map(({ label, href }, ix) => (
+                <li key={ix}>
+                  <Link
+                    href={href}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </motion.div>

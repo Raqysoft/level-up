@@ -69,7 +69,7 @@ export default function FaqAccordion() {
                 <AccordionTrigger className="flex items-center justify-between py-4 text-xl font-medium hover:no-underline [&[data-state=open]>div>svg.plus-icon]:hidden [&[data-state=closed]>div>svg.minus-icon]:hidden cursor-pointer">
                   {item.question}
                   <motion.div
-                    className="flex h-10 w-10 items-center justify-center rounded-2xl bg-lime-400 text-zinc-900"
+                    className="flex min-h-10 min-w-10 items-center justify-center rounded-2xl bg-lime-400 text-zinc-900"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >

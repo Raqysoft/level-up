@@ -9,7 +9,7 @@ import UseCases from "@/components/services/UseCases";
 
 export default function Home() {
   return (
-    <div className="overflow-x-hidden">
+    <div>
       <Hero />
       <ServicesGrid />
       <DifferenceSection />
