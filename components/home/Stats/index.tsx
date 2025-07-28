@@ -1,40 +1,23 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import ReelCard from "@/components/shared/ReelCard";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { cn } from "@/lib/utils";
 
 function Stats() {
-  const [isMount, setIsMount] = useState(false);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
   const sectionRef = useRef<HTMLDivElement | null>(null);
-
-  const cardsLeft = [1, 2, 3];
-  const cardsRight = [1, 5, 3];
-
-  useEffect(() => {
-    function handleScroll() {
-      if (!sectionRef.current) return;
-
-      const sectionTop = sectionRef.current.offsetTop;
-      const sectionHeight = sectionRef.current.offsetHeight;
-      const scrollPosition = window.scrollY + window.innerHeight;
-
-      // Trigger when the bottom of the viewport reaches 60% of the section
-      if (scrollPosition - 50 > sectionTop + sectionHeight * 0.4) {
-        setIsMount(true);
-        window.removeEventListener("scroll", handleScroll); // only once
-      }
-    }
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // check on mount in case already in view
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const CARDS = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
     <motion.div
-      layout
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
@@ -42,132 +25,161 @@ function Stats() {
       className="container relative z-10 py-28"
       ref={sectionRef}
     >
-      <motion.div
-        layout
-        className="rounded-3xl bg-foreground flex flex-col justify-center gap-16 overflow-hidden py-12 px-4"
-      >
-        {/* Images */}
-        <motion.div layout className="flex-1 flex-center gap-4">
-          {cardsLeft.map((i, ix) => (
-            <motion.div
-              layout
-              key={`left-${i}-${ix}`}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 60 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{
-                delay: 0.2 + 0.2 * ix,
-                duration: 0.5,
-                ease: "easeInOut",
-              }}
-            >
-              <ReelCard
-                speaker={i}
-                className="h-[300px] min-w-48 bg-primary/50"
-              />
-            </motion.div>
-          ))}
+      <motion.div className="rounded-3xl bg-foreground flex flex-col justify-center gap-16 overflow-hidden py-12 px-4 md:px-8">
+        {/* Swiper Slider */}
+        <div className="relative w-full">
+          <Swiper
+            modules={[Navigation, Pagination]}
+            grabCursor={true}
+            centeredSlides={true}
+            loop={true}
+            spaceBetween={30}
+            slidesPerView={"auto"}
+            speed={600}
+            breakpoints={{
+              320: { spaceBetween: 20 },
+              640: { spaceBetween: 25 },
+              768: { spaceBetween: 30 },
+              1024: { spaceBetween: 10 },
+            }}
+            onSlideChange={(swiper) => {
+              setActiveIndex(swiper.realIndex);
+            }}
+            onSwiper={(swiper) => {
+              setActiveIndex(swiper.realIndex);
+            }}
+            className="!overflow-visible !py-12"
+          >
+            {CARDS.map((cardNumber, index) => {
+              const isActive = activeIndex === index;
 
-          <AnimatePresence>
-            {isMount && (
-              <motion.div
-                key="center-highlight"
-                initial={{ opacity: 0, scale: 0.8, y: 60 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: 60 }}
-                transition={{
-                  delay: 0.8,
-                  duration: 0.6,
-                  ease: "easeInOut",
-                }}
-                className="group relative mx-4"
-              >
-                <div className="absolute-center bg-primary/40 w-[110%] h-[85%] group-hover:size-[90%] rounded-xl group-hover:rounded-3xl duration-300"></div>
-                <ReelCard
-                  speaker={4}
-                  className="h-[450px] min-w-72 sm:min-w-80 bg-primary/50 rounded-3xl shadow-primary border-2 border-white hover:scale-100"
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
+              return (
+                <SwiperSlide
+                  key={`slide-${cardNumber}-${index}`}
+                  className={cn(
+                    " !p-0 !h-[430px] flex justify-center items-center",
+                    isActive ? "z-40 !w-80" : "!w-72"
+                  )}
+                >
+                  <div className="relative w-full h-full flex justify-center items-center">
+                    {/* Card container with consistent size */}
+                    <motion.div
+                      initial={false}
+                      animate={{
+                        scale: isActive ? 1.2 : 0.85,
+                        y: isActive ? 0 : 10,
+                        rotateY: isActive ? 0 : 5,
+                      }}
+                      transition={{
+                        duration: 0.6,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                      }}
+                      className={cn(
+                        "relative w-full h-[430px] transform-gpu",
+                        isActive && "mx-8"
+                      )}
+                      style={{
+                        transformStyle: "preserve-3d",
+                      }}
+                    >
+                      {/* Active slide border effect */}
+                      <motion.div
+                        initial={false}
+                        animate={{
+                          opacity: isActive ? 1 : 0,
+                          scale: isActive ? 1 : 0.9,
+                        }}
+                        className={cn(
+                          "absolute-center bg-primary/40 w-[110%] h-[85%] group-hover:size-[90%] rounded-xl group-hover:rounded-3xl duration-300"
+                        )}
+                      />
 
-          {cardsRight.map((i, ix) => (
-            <motion.div
-              layout
-              key={`right-${i}-${ix}`}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 60 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{
-                delay: 0.8 - 0.2 * ix,
-                duration: 0.5,
-                ease: "backOut",
-              }}
-            >
-              <ReelCard
-                speaker={i}
-                className="h-[300px] min-w-48 bg-primary/50"
-              />
-            </motion.div>
-          ))}
-        </motion.div>
+                      <ReelCard
+                        speaker={cardNumber}
+                        className={cn(
+                          "w-full h-full hover:scale-100 rounded-3xl bg-primary/50 shadow-xl transition-all duration-600 ease-out transform-gpu",
+                          isActive
+                            ? "shadow-2xl shadow-primary/25"
+                            : "shadow-lg opacity-70"
+                        )}
+                      />
+                    </motion.div>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
 
-        {/* Text */}
-        <div className="flex-center text-background flex-wrap gap-20">
+        {/* Stats Section */}
+        <div className="flex justify-center items-center flex-wrap gap-8 md:gap-16 lg:gap-20 text-background">
+          {/* Engagement Stat */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ delay: 0.2 }}
-            className="relative"
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="relative text-center"
           >
             <Image
               src="/svgs/engagement.svg"
               alt="engagement"
               width={40}
               height={40}
-              className="absolute -bottom-4 -right-6"
+              className="absolute -bottom-2 -right-4 md:-bottom-4 md:-right-6"
             />
-            <span className="text-5xl font-clash-display font-bold">+230%</span>
-            <p className="text-lg font-light">Engagement lift</p>
+            <div className="text-4xl md:text-5xl font-clash-display font-bold mb-2">
+              +230%
+            </div>
+            <p className="text-base md:text-lg font-light opacity-90">
+              Engagement lift
+            </p>
           </motion.div>
 
+          {/* Views Stat */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ delay: 0.4 }}
-            className="relative"
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="relative text-center"
           >
             <Image
               src="/svgs/views.svg"
-              alt="engagement"
+              alt="views"
               width={40}
               height={40}
-              className="absolute -top-0 right-4"
+              className="absolute -top-1 right-2 md:-top-2 md:right-0"
             />
-            <span className="text-5xl font-clash-display font-bold">7.2M</span>
-            <p className="text-lg font-light">Total Views Generated</p>
+            <div className="text-4xl md:text-5xl font-clash-display font-bold mb-2">
+              7.2M
+            </div>
+            <p className="text-base md:text-lg font-light opacity-90">
+              Total Views Generated
+            </p>
           </motion.div>
 
+          {/* Brands Stat */}
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ delay: 0.6 }}
-            className="relative"
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="relative text-center"
           >
             <Image
               src="/svgs/curved-path.svg"
-              alt="engagement"
+              alt="brands served"
               width={40}
               height={40}
-              className="absolute bottom-4 left-24"
+              className="absolute bottom-2 left-16 md:bottom-4 md:left-20 lg:left-36"
             />
-            <span className="text-5xl font-clash-display font-bold">60+</span>
-            <p className="text-lg font-light">Brands & Creators Served</p>
+            <div className="text-4xl md:text-5xl font-clash-display font-bold mb-2">
+              60+
+            </div>
+            <p className="text-base md:text-lg font-light opacity-90">
+              Brands & Creators Served
+            </p>
           </motion.div>
         </div>
       </motion.div>

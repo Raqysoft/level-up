@@ -2,8 +2,13 @@
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
-import { Play, Pause, Volume2, VolumeX } from "lucide-react";
-import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import { Play, Pause, Volume2, VolumeX, X } from "lucide-react";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogClose,
+} from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -146,27 +151,36 @@ function ReelCard({
           </div>
 
           {/* Controls */}
-          <div className="absolute top-4 right-4 z-30 flex gap-2">
-            <button
-              onClick={togglePlay}
-              className="bg-black/50 rounded-full p-2 hover:bg-black/70"
-            >
-              {isPlaying ? (
-                <Pause className="text-white size-5" />
-              ) : (
-                <Play className="text-white size-5" />
-              )}
-            </button>
-            <button
-              onClick={toggleMute}
-              className="bg-black/50 rounded-full p-2 hover:bg-black/70"
-            >
-              {isMuted ? (
-                <VolumeX className="text-white size-5" />
-              ) : (
-                <Volume2 className="text-white size-5" />
-              )}
-            </button>
+          <div className="absolute top-4 z-30 flex gap-2 w-full">
+            <div className="w-full flex-between px-4">
+              <DialogClose>
+                <button className="bg-black/50 cursor-pointer rounded-full p-2 hover:bg-black/70">
+                  <X className="size-5" />
+                </button>
+              </DialogClose>
+              <div className="flex-center gap-2">
+                <button
+                  onClick={togglePlay}
+                  className="bg-black/50 rounded-full p-2 hover:bg-black/70"
+                >
+                  {isPlaying ? (
+                    <Pause className="text-white size-5" />
+                  ) : (
+                    <Play className="text-white size-5" />
+                  )}
+                </button>
+                <button
+                  onClick={toggleMute}
+                  className="bg-black/50 rounded-full p-2 hover:bg-black/70"
+                >
+                  {isMuted ? (
+                    <VolumeX className="text-white size-5" />
+                  ) : (
+                    <Volume2 className="text-white size-5" />
+                  )}
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Progress Bar */}
