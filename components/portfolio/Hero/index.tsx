@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import ReelCard from "@/components/shared/ReelCard";
 import Image from "next/image";
+import { REELS } from "@/constants/reels";
 
 const SLIDER_ITEMS = 8;
 function Hero() {
@@ -51,16 +52,15 @@ function Hero() {
               }}
               className="flex items-center gap-6"
             >
-              {Array(SLIDER_ITEMS * 2)
-                .fill(0)
-                .map((_, ix) => (
-                  <div key={ix}>
-                    <ReelCard
-                      className="min-w-64 min-h-64"
-                      speaker={Math.ceil(Math.random() * 8)}
-                    />
-                  </div>
-                ))}
+              {[...REELS, ...REELS].map((reel, ix) => (
+                <div key={ix}>
+                  <ReelCard
+                    className="min-w-64 min-h-64"
+                    speaker={Math.ceil(Math.random() * 8)}
+                    reel={reel}
+                  />
+                </div>
+              ))}
             </motion.div>
           </div>
         </motion.div>

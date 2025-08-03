@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import BodyLines from "@/components/shared/BodyLines";
 import localFont from "next/font/local";
 import { Inter } from "next/font/google";
@@ -8,6 +7,7 @@ import { Suspense } from "react";
 import Loading from "./loading";
 import Footer from "@/components/shared/Footer";
 import WhatsAppPopup from "@/components/shared/WhatsAppPopup";
+import "./globals.css";
 
 const clashDisplay = localFont({
   src: [

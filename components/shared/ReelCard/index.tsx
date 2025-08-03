@@ -40,9 +40,11 @@ const reels = [
 function ReelCard({
   speaker,
   className,
+  reel,
 }: {
   speaker: number;
   className?: string;
+  reel?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [selectedReel, setSelectedReel] = useState(reels[0]);
@@ -94,16 +96,25 @@ function ReelCard({
             className
           )}
         >
-          <Image
-            src={`/images/speakers/speaker-${speaker}.png`}
-            alt={`speaker-${speaker}`}
-            className="object-cover"
-            fill
-            priority
-          />
-          <div className="flex-center rounded-full size-20 bg-white/10 backdrop-blur-md border border-white/30">
-            <Play />
-          </div>
+          {reel ? (
+            <iframe
+              src={`https://drive.google.com/file/d/${reel}/preview`}
+              className="absolute bottom left-1/2 -translate-x-1/2 w-[315%] h-full object-cover pointer-events-none"
+            />
+          ) : (
+            <>
+              <Image
+                src={`/images/speakers/speaker-${speaker}.png`}
+                alt={`speaker-${speaker}`}
+                className="object-cover"
+                fill
+                priority
+              />
+              <div className="flex-center rounded-full size-20 bg-white/10 backdrop-blur-md border border-white/30">
+                <Play />
+              </div>
+            </>
+          )}
         </div>
       </DialogTrigger>
 
@@ -116,21 +127,30 @@ function ReelCard({
           className="relative w-full h-full overflow-hidden rounded-2xl shadow-lg shadow-black/40"
         >
           {/* Video */}
-          <video
-            ref={videoRef}
-            src={selectedReel.video}
-            autoPlay
-            loop
-            playsInline
-            onTimeUpdate={handleTimeUpdate}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
+          {reel ? (
+            <iframe
+              src={`https://drive.google.com/file/d/${reel}/preview`}
+              allow="autoplay"
+              className="absolute inset-0 w-full h-full rounded-3xl"
+            />
+          ) : (
+            <video
+              ref={videoRef}
+              src={selectedReel.video}
+              autoPlay
+              loop
+              playsInline
+              onTimeUpdate={handleTimeUpdate}
+              muted={isMuted}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          )}
 
           {/* Gradient Overlay */}
-          <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/90 from-10% to-transparent z-10" />
+          {/* <div className="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-black/90 from-10% to-transparent z-10" /> */}
 
           {/* Publisher Info & Caption */}
-          <div className="absolute bottom-4 left-4 z-20 text-white flex flex-col gap-2">
+          {/* <div className="absolute bottom-4 left-4 z-20 text-white flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <div className="relative bg-zinc-800 rounded-full w-10 h-10">
                 <Image
@@ -148,10 +168,10 @@ function ReelCard({
               </div>
             </div>
             <p className="text-sm text-white/90">{selectedReel.caption}</p>
-          </div>
+          </div> */}
 
           {/* Controls */}
-          <div className="absolute top-4 z-30 flex gap-2 w-full">
+          {/* <div className="absolute top-4 z-30 flex gap-2 w-full">
             <div className="w-full flex-between px-4">
               <DialogClose>
                 <button className="bg-black/50 cursor-pointer rounded-full p-2 hover:bg-black/70">
@@ -181,15 +201,15 @@ function ReelCard({
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Progress Bar */}
-          <div className="absolute bottom-1 left-0 w-full h-1 z-40 bg-white/20">
+          {/* <div className="absolute bottom-1 left-0 w-full h-1 z-40 bg-white/20">
             <div
               className="h-full bg-white transition-all duration-200"
               style={{ width: `${progress}%` }}
             />
-          </div>
+          </div> */}
         </motion.div>
       </DialogContent>
     </Dialog>
