@@ -7,6 +7,7 @@ import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { IReal } from "@/constants/reels";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 
 function ReelCard({
   speaker,
@@ -15,8 +16,10 @@ function ReelCard({
 }: {
   speaker: number;
   className?: string;
-  reel?: IReal;
+  reel?: IGoogleDriveVideo;
 }) {
+  if (!reel?.thumbnailLink) return null;
+  const thumbnail = reel?.thumbnailLink.replace(/=s\d+/, "=s800") || "";
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -26,27 +29,16 @@ function ReelCard({
             className
           )}
         >
-          {false ? (
-            <iframe
-              src={`https://drive.google.com/file/d/${reel?.videoId}/preview`}
-              className="absolute bottom left-1/2 -translate-x-1/2 w-[315%] h-full object-cover pointer-events-none"
-            />
-          ) : (
-            <>
-              <Image
-                src={
-                  reel ? reel.cover : `/images/speakers/speaker-${speaker}.png`
-                }
-                alt={`speaker-${speaker}`}
-                className="object-cover"
-                fill
-                priority
-              />
-              <div className="flex-center rounded-full size-20 bg-white/10 backdrop-blur-md border border-white/30">
-                <Play />
-              </div>
-            </>
-          )}
+          <Image
+            src={thumbnail}
+            alt={`speaker-${speaker}`}
+            className="object-cover"
+            fill
+            priority
+          />
+          <div className="flex-center rounded-full size-20 bg-white/10 backdrop-blur-md border border-white/30">
+            <Play />
+          </div>
         </div>
       </DialogTrigger>
 
@@ -58,11 +50,24 @@ function ReelCard({
           transition={{ duration: 0.3 }}
           className="relative w-full h-full overflow-hidden rounded-2xl shadow-lg shadow-black/40"
         >
+          {/* <video
+            className="w-full h-full"
+            controls
+            style={{ borderRadius: "12px" }}
+            poster={reel?.cover}
+          >
+            <source
+              src={`/api/drive-video?fileId=${reel?.id}`}
+              type="video/mp4"
+            />
+          </video> */}
           <iframe
-            src={`https://drive.google.com/file/d/${reel?.videoId}/preview`}
+            src={`https://drive.google.com/file/d/${reel?.id}/preview`}
+            width="100%"
+            height="100%"
             allow="autoplay"
-            className="absolute inset-0 w-full h-full rounded-3xl"
-          />
+            className="overflow-hidden"
+          ></iframe>
         </motion.div>
       </DialogContent>
     </Dialog>

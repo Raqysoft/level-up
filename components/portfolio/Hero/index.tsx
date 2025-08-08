@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import ReelCard from "@/components/shared/ReelCard";
 import Image from "next/image";
 import { REELS } from "@/constants/reels";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 
 const SLIDER_ITEMS = 8;
-function Hero() {
+function Hero({ reels }: { reels: IGoogleDriveVideo[] }) {
   return (
     <div className="relative">
       <motion.div
@@ -52,14 +53,13 @@ function Hero() {
               }}
               className="flex items-center gap-6"
             >
-              {[...REELS, ...REELS].map((reel, ix) => (
-                <div key={ix}>
-                  <ReelCard
-                    className="min-w-64 min-h-64"
-                    speaker={Math.ceil(Math.random() * 8)}
-                    reel={reel}
-                  />
-                </div>
+              {[...reels, ...reels].map((reel, ix) => (
+                <ReelCard
+                  key={ix}
+                  className="min-w-64 min-h-64"
+                  speaker={Math.ceil(Math.random() * 8)}
+                  reel={reel}
+                />
               ))}
             </motion.div>
           </div>

@@ -2,7 +2,7 @@ import Hero from "@/components/contact/Hero";
 import ContactForm from "@/components/contact/ContactForm";
 import React from "react";
 
-function Contact() {
+async function Contact() {
   return (
     <div className="overflow-x-hidden">
       <Hero />
