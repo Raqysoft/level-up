@@ -8,6 +8,7 @@ import Loading from "./loading";
 import Footer from "@/components/shared/Footer";
 import WhatsAppPopup from "@/components/shared/WhatsAppPopup";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const clashDisplay = localFont({
   src: [
@@ -56,6 +57,7 @@ export default function RootLayout({
           <BodyLines cols={4} />
           <main className="relative">
             {children}
+            <Toaster />
             <WhatsAppPopup />
           </main>
           <Footer />

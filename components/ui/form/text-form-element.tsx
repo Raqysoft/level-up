@@ -17,7 +17,7 @@ const globalConfig = {
   styles: {
     mainClassName: "",
     inputClassName:
-      "w-full !bg-white rounded-md border border-gray-300 !text-[12px] !p-3 h-10",
+      "w-full !bg-white text-black rounded-md border border-gray-300 !text-[12px] !p-3 h-10",
     labelClassName: "text-base font-clash-display font-medium text-background/70",
   },
 };
