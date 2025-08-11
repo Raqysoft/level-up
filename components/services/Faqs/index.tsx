@@ -13,33 +13,39 @@ import { motion, AnimatePresence } from "framer-motion";
 const faqItems = [
   {
     value: "item-1",
-    question: "What's the difference between the Free and Pro plans?",
+    question: "How much does it cost?",
     answer:
-      "Free Plan gives you access to public events, service provider discounts, and ecosystem updates. Pro Plan unlocks capital raise listings, Smart Swipe™, private messaging, community access, and advanced analytics.",
+      "Let's start with a friendly 30-minute call to see if we're a great match for each other! Once we've connected, we'd be excited to walk you through the investment details and how everything comes together.",
   },
   {
     value: "item-2",
-    question: "How does Smart Swipe™ work?",
+    question: "Is it really 2 hours per month?",
     answer:
-      "Smart Swipe™ allows you to quickly connect with relevant opportunities and individuals based on your preferences. Swipe right to express interest, and left to pass.",
+      "Absolutely. We've implemented this system successfully with many clients. While the first month may take an extra 1-2 hours depending on onboarding needs, the process quickly becomes streamlined. Occasionally, practice sessions might run longer at first, but as you continue creating with us, we see a significant drop in the time required. For the majority of our clients, 2 hours a month—1 hour for practice and 1 hour for recording is not just normal, it's proven and repeatable.",
   },
   {
     value: "item-3",
-    question: "Can I upgrade or downgrade my plan at any time?",
+    question: "What if I need additional sessions?",
     answer:
-      "Yes, you can easily upgrade or downgrade your plan directly from your account settings. Changes will take effect at the start of your next billing cycle.",
+      "Our system is designed to efficiently accommodate your needs within the allocated time. With one hour in the studio, we can typically complete 15 videos. However, if you find the need for extra sessions, we can easily arrange that as well. Your satisfaction is our priority.",
   },
   {
     value: "item-4",
-    question: "What kind of support is available?",
+    question: "How will you handle the posting of my videos?",
     answer:
-      "We offer email support for all users. Pro Plan members receive priority support and access to dedicated account managers.",
+      "You have the option to provide us access to your social media accounts, and we'll take care of scheduling and posting your videos across all platforms. Alternatively, if you prefer, we can send you the videos and you can post them yourself. Your convenience is our focus.",
   },
   {
     value: "item-5",
-    question: "Is my data secure?",
+    question: "How do I communicate feedback?",
     answer:
-      "Yes, we prioritize the security of your data. We use industry-standard encryption and security protocols to protect your information.",
+      "You'll chat directly with your dedicated project manager on slack and use frame.io to drop reviews on the video",
+  },
+  {
+    value: "item-6",
+    question: "Can I cancel if I don't like it?",
+    answer:
+      "Cancellation requests can be processed only at the end of your 3-month billing cycle.",
   },
 ];
 

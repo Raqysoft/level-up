@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { PROCESS } from "@/constants/process";
 
 const steps = [
   {
@@ -179,10 +180,10 @@ export default function ServicesTimeline() {
 
           {/* Timeline steps */}
           <div className="flex flex-col justify-between relative z-10 min-h-[1000px] sm:min-h-[1200px] md:min-h-[1400px]">
-            {steps.map((step, index) => (
+            {PROCESS.map((step, index) => (
               <TimelineStep
-                key={step.id}
-                step={step}
+                key={index}
+                step={{ ...step, id: `${index}` }}
                 index={index}
                 scrollProgress={scrollYProgress}
               />
