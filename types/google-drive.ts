@@ -1,3 +1,10 @@
+export interface IGoogleDriveFolder {
+  id: string;
+  name: string;
+  mimeType: string;
+  hasThumbnail: boolean;
+}
+
 export interface IGoogleDriveVideo {
   id: string;
   name: string;
@@ -13,5 +20,17 @@ export interface IGoogleDriveVideo {
 }
 
 export interface IGoogleDriveResponse {
-  files: IGoogleDriveVideo[];
+  files: (IGoogleDriveVideo | IGoogleDriveFolder)[];
+}
+
+export interface IGoogleDriveCategorizedVideos {
+  [folderId: string]: {
+    folderName: string;
+    videos: IGoogleDriveVideo[];
+  };
+}
+
+export interface IGoogleDriveCategory {
+  id: string;
+  name: string;
 }

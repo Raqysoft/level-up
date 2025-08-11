@@ -1,11 +1,10 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import ReelCard from "@/components/shared/ReelCard";
-import Image from "next/image";
 import ScatteredReels from "./scattered-reels";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 
-function Hero() {
+function Hero({ featuredReels }: { featuredReels: IGoogleDriveVideo[] }) {
   return (
     <div className="relative pb-32 overflow-x-hidden">
       <motion.div
@@ -33,7 +32,7 @@ function Hero() {
             your audience with professional content.
           </motion.p>
         </hgroup>
-        <ScatteredReels />
+        <ScatteredReels featuredReels={featuredReels} />
       </section>
     </div>
   );

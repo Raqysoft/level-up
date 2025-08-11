@@ -8,11 +8,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 // import "swiper/css/autoplay";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 
-function Testimonials() {
-  // Calculate total width for seamless looping
-  const sliderWidth = TESTIMONIALS.length * 450; // Approximate width per card including margin
-
+function Testimonials({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
   return (
     <section className="bg-foreground py-20 relative overflow-hidden">
       <div className="absolute inset-0 size-full grid grid-cols-4">
@@ -65,14 +63,20 @@ function Testimonials() {
               centeredSlides
               modules={[Autoplay]}
             >
-              {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, index) => (
-                <SwiperSlide
-                  key={`${testimonial.id}-${index}`}
-                  className="w-[90vw] md:w-[700px]"
-                >
-                  <TestimonialCard testimonial={testimonial} />
-                </SwiperSlide>
-              ))}
+              {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, index) => {
+                const videoIndex = index % videos.length;
+                return (
+                  <SwiperSlide
+                    key={`${testimonial.id}-${index}`}
+                    className="w-[90vw] md:w-[700px]"
+                  >
+                    <TestimonialCard 
+                      testimonial={testimonial} 
+                      video={videos[videoIndex]}
+                    />
+                  </SwiperSlide>
+                );
+              })}
             </Swiper>
           </motion.div>
         </div>

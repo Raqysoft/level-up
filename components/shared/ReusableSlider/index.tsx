@@ -102,7 +102,7 @@ export default function ReusableSlider({
           />
         </div>
         <div className="w-full hidden lg:flex items-center justify-center gap-2">
-          {Array(renderSlides().length / 4 + 3)
+          {Array(Math.max(1, Math.ceil(renderSlides().length - 3))) // -3 because at largest breakpoint we show 4 slides
             .fill("")
             .map((_, ix) => (
               <div

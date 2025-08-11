@@ -6,13 +6,21 @@ import FaqAccordion from "@/components/services/Faqs";
 import StickyTextReveal from "@/components/shared/StickyTextReveal";
 import Hero from "@/components/services/Hero";
 import UseCases from "@/components/services/UseCases";
+import { fetchAllVideos } from "@/lib/fetch-drive-videos";
 
-export default function Home() {
+async function Services() {
+  const allVideos = await fetchAllVideos();
+  const sampleVideos = allVideos.sort(() => Math.random() - 0.5).slice(0, 6);
+
   return (
     <div>
-      <Hero />
+      <Hero featuredReels={sampleVideos.slice(0, 3)} />
       <ServicesGrid />
-      <DifferenceSection />
+      <DifferenceSection
+        selectedReel={
+          sampleVideos[Math.floor(Math.random() * sampleVideos.length)]
+        }
+      />
       <StickyTextReveal
         title="Reels Production"
         text="Your brand deserves content that's fast, bold, and made to perform"
@@ -20,8 +28,10 @@ export default function Home() {
       />
       <ServicesTimeline />
       <UseCases />
-      <WorkSamples />
+      <WorkSamples videos={sampleVideos} />
       <FaqAccordion />
     </div>
   );
 }
+
+export default Services;

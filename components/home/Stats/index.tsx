@@ -10,11 +10,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { cn } from "@/lib/utils";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 
-function Stats() {
+function Stats({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const sectionRef = useRef<HTMLDivElement | null>(null);
-  const CARDS = [1, 2, 3, 4, 5, 6, 7, 8];
 
   return (
     <motion.div
@@ -50,12 +50,11 @@ function Stats() {
             }}
             className="!overflow-visible !py-12"
           >
-            {CARDS.map((cardNumber, index) => {
+            {videos.map((video, index) => {
               const isActive = activeIndex === index;
-
               return (
                 <SwiperSlide
-                  key={`slide-${cardNumber}-${index}`}
+                  key={video.id}
                   className={cn(
                     " !p-0 !h-[430px] flex justify-center items-center",
                     isActive ? "z-40 !w-80" : "!w-72"
@@ -95,7 +94,7 @@ function Stats() {
                       />
 
                       <ReelCard
-                        speaker={cardNumber}
+                        reel={video}
                         className={cn(
                           "w-full h-full hover:scale-100 rounded-3xl bg-primary/50 shadow-xl transition-all duration-600 ease-out transform-gpu",
                           isActive

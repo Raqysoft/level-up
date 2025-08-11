@@ -2,8 +2,13 @@ import ReelCard from "@/components/shared/ReelCard";
 import { BadgeCheck, Gauge, TrendingUp } from "lucide-react";
 import React from "react";
 import { motion } from "framer-motion";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 
-function ScatteredReels() {
+function ScatteredReels({
+  featuredReels,
+}: {
+  featuredReels: IGoogleDriveVideo[];
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -54,8 +59,8 @@ function ScatteredReels() {
 
       {/* ReelCard Left */}
       <ReelCard
-        speaker={5}
-        className="absolute w-[270px] h-[400px] border-4 border-white hover:scale-95 duration-300
+        reel={featuredReels[0]}
+        className="absolute w-[270px] h-[400px] border-4 border-white hover:scale-95 !duration-500
         bottom-4 left-1/2 -translate-x-1/2 rotate-0 origin-bottom-left
         md:left-40 md:bottom-[-3rem] md:-rotate-[32deg]
         md:group-hover:left-1/2 md:group-hover:-translate-x-1/2 md:group-hover:rotate-0 md:group-hover:bottom-4 md:group-hover:origin-bottom hover:-translate-y-8"
@@ -63,17 +68,17 @@ function ScatteredReels() {
 
       {/* ReelCard Center */}
       <ReelCard
-        speaker={3}
-        className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[270px] h-[400px] border-4 border-white hover:scale-95 hover:-translate-y-4"
+        reel={featuredReels[1]}
+        className="!duration-500 absolute left-1/2 -translate-x-1/2 bottom-0 w-[270px] h-[400px] border-4 border-white hover:scale-95 hover:-translate-y-4"
       />
 
       {/* ReelCard Right */}
       <ReelCard
-        speaker={8}
-        className="absolute w-[270px] h-[400px] border-4 border-white hover:scale-95
-        bottom-[-1.5rem] left-1/2 -translate-x-1/2 rotate-0 origin-bottom-right
-        md:-right-44 md:left-auto md:rotate-[20deg]
-        md:group-hover:left-1/2 md:group-hover:-translate-x-1/2 md:group-hover:rotate-0 md:group-hover:-bottom-6 md:group-hover:origin-bottom hover:-translate-y-6"
+        reel={featuredReels[2]}
+        className="!duration-500 absolute w-[270px] h-[400px] border-4 border-white hover:scale-100
+        bottom-[-2.5rem] left-1/2 -translate-x-1/2 rotate-0 origin-bottom-right
+        md:left-[440px] md:rotate-[20deg]
+        md:group-hover:left-1/2 md:group-hover:-translate-x-1/2 md:group-hover:rotate-0 md:group-hover:-bottom-6 md:group-hover:origin-bottom"
       />
     </motion.div>
   );

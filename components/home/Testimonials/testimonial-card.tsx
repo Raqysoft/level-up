@@ -1,11 +1,14 @@
 import ReelCard from "@/components/shared/ReelCard";
 import { TESTIMONIALS } from "@/constants/testimonials";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 import Image from "next/image";
 
 export function TestimonialCard({
   testimonial,
+  video,
 }: {
   testimonial: (typeof TESTIMONIALS)[0];
+  video?: IGoogleDriveVideo;
 }) {
   return (
     <div className="relative bg-[#E0AAFE] backdrop-blur-md rounded-lg p-6 overflow-hidden w-full flex-shrink-0 mx-3">
@@ -66,7 +69,7 @@ export function TestimonialCard({
           </div>
         </div>
         <ReelCard
-          speaker={testimonial.id}
+          reel={video}
           className="min-w-48 h-68 border-2 border-[#D8FF1E]"
         />
       </div>

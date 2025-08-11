@@ -1,20 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import ReelCard from "../ReelCard";
-
-const images1 = [4, 2, 5, 1, 6, 3];
-const images2 = [5, 6, 3, 2, 1, 4];
+import { IGoogleDriveVideo } from "@/types/google-drive";
 
 export default function InfiniteScrollGallery({
   inverseScale = false,
+  videos = [],
 }: {
   inverseScale?: boolean;
+  videos?: IGoogleDriveVideo[];
 }) {
+  // Create two arrays of videos for the columns
+  const videos1 = videos.slice(0, Math.ceil(videos.length / 2));
+  const videos2 = videos.slice(Math.ceil(videos.length / 2));
+
   // Calculate total height of each column for seamless looping
-  const column1Height = images1.length * 450; // Approximate height per image including gap
-  const column2Height = (images2.length - 1) * 450;
+  const column1Height = videos1.length * 450; // Approximate height per video including gap
+  const column2Height = videos2.length * 450;
 
   return (
     <div className="h-full flex gap-4 md:gap-6 justify-center max-w-6xl mx-auto">
@@ -26,7 +29,7 @@ export default function InfiniteScrollGallery({
           transition={{ duration: 1, delay: 0.3, ease: "easeInOut" }}
         >
           <motion.div
-            className="flex flex-col gap-4 "
+            className="flex flex-col gap-4 w-full"
             animate={{
               y: [-column1Height, 0],
             }}
@@ -36,11 +39,11 @@ export default function InfiniteScrollGallery({
               ease: "linear",
             }}
           >
-            {[...images1, ...images1].map((item, ix) => (
+            {[...videos1, ...videos1].map((video, ix) => (
               <ReelCard
                 className={inverseScale ? "hover:scale-95" : ""}
-                speaker={item}
-                key={ix}
+                reel={video}
+                key={`${video.id}-${ix}`}
               />
             ))}
           </motion.div>
@@ -55,7 +58,7 @@ export default function InfiniteScrollGallery({
         className="flex-1 min-w-16 relative h-full overflow-hidden"
       >
         <motion.div
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-4 w-full"
           animate={{
             y: [-column2Height, 0],
           }}
@@ -65,13 +68,13 @@ export default function InfiniteScrollGallery({
             ease: "linear",
           }}
         >
-          {[...images2, ...images2].map((item, ix) => (
+          {[...videos2, ...videos2].map((video, ix) => (
             <ReelCard
               className={inverseScale ? "hover:scale-95" : ""}
-              speaker={item}
-              key={ix}
+              reel={video}
+              key={`${video.id}-${ix}`}
             />
-          ))}
+            ))}
         </motion.div>
       </motion.div>
     </div>

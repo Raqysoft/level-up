@@ -8,8 +8,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { PARTNERS } from "@/constants/partners";
 import Link from "next/link";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 
-function HomeHero() {
+function HomeHero({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
   return (
     <div className="relative min-h-screen">
       <div className="container relative">
@@ -106,10 +107,9 @@ function HomeHero() {
           <div
             className="absolute w-full md:w-1/2 h-[150%] -rotate-[20deg] -right-72 md:-right-40 -top-40
          [mask-image:linear-gradient(to_bottom,black_50%,transparent_80%),linear-gradient(to_top,black_70%,transparent_100%)]
-         [mask-composite:intersect] 
-            "
+         [mask-composite:intersect]"
           >
-            <InfiniteScrollGallery inverseScale />
+            <InfiniteScrollGallery videos={videos} inverseScale />
           </div>
         </div>
       </div>

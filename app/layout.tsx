@@ -9,6 +9,7 @@ import Footer from "@/components/shared/Footer";
 import WhatsAppPopup from "@/components/shared/WhatsAppPopup";
 import "./globals.css";
 import { Toaster } from "sonner";
+import { fetchAllVideos } from "@/lib/fetch-drive-videos";
 
 const clashDisplay = localFont({
   src: [
@@ -42,11 +43,12 @@ export const metadata: Metadata = {
   description: "Your Brand Deserves Reels That Win",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const videos = await fetchAllVideos();
   return (
     <html lang="en">
       <body
@@ -60,7 +62,7 @@ export default function RootLayout({
             <Toaster />
             <WhatsAppPopup />
           </main>
-          <Footer />
+          <Footer videos={videos} />
         </Suspense>
       </body>
     </html>

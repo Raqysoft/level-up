@@ -9,7 +9,7 @@ import { IGoogleDriveVideo } from "@/types/google-drive";
 const SLIDER_ITEMS = 8;
 function Hero({ reels }: { reels: IGoogleDriveVideo[] }) {
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       <motion.div
         initial={{ opacity: 0, rotate: -6 }}
         animate={{ opacity: 1, rotate: 0 }}
@@ -54,12 +54,7 @@ function Hero({ reels }: { reels: IGoogleDriveVideo[] }) {
               className="flex items-center gap-6"
             >
               {[...reels, ...reels].map((reel, ix) => (
-                <ReelCard
-                  key={ix}
-                  className="min-w-64 min-h-64"
-                  speaker={Math.ceil(Math.random() * 8)}
-                  reel={reel}
-                />
+                <ReelCard key={ix} className="min-w-64 min-h-64" reel={reel} />
               ))}
             </motion.div>
           </div>

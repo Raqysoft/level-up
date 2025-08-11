@@ -3,10 +3,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import ReelCard from "@/components/shared/ReelCard";
 import Image from "next/image";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 import { Play } from "lucide-react";
 
 const SLIDER_ITEMS = 8;
-function Hero() {
+function Hero({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
+  // Get a random video for the hero section
+  const heroVideo = videos.length > 0 ? videos[Math.floor(Math.random() * videos.length)] : null;
+
   return (
     <div className="relative">
       <motion.div
@@ -50,16 +54,22 @@ function Hero() {
             transition={{ delay: 0.4 }}
             className="relative mx-auto rounded-2xl bg-secondary h-80 md:h-[400px] lg:h-[500px] overflow-hidden border-4 border-secondary/20"
           >
-            <Image
-              src="/images/contact-cover.jpg"
-              alt="contact"
-              className="object-cover"
-              fill
-              priority
-            />
-            <div className="absolute-center size-20 backdrop-blur-xs border-4 bg-white/20 flex-center rounded-full cursor-pointer duration-300 hover:scale-95">
-              <Play size={32} />
-            </div>
+            {heroVideo ? (
+              <ReelCard reel={heroVideo} className="w-full h-full" />
+            ) : (
+              <>
+                <Image
+                  src="/images/contact-cover.jpg"
+                  alt="contact"
+                  className="object-cover"
+                  fill
+                  priority
+                />
+                <div className="absolute-center size-20 backdrop-blur-xs border-4 bg-white/20 flex-center rounded-full cursor-pointer duration-300 hover:scale-95">
+                  <Play size={32} />
+                </div>
+              </>
+            )}
           </motion.div>
         </div>
         <div className="absolute bg-foreground w-full h-[25%] bottom-0 left-0"></div>

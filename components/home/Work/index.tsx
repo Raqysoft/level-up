@@ -5,8 +5,9 @@ import ReusableSlider from "@/components/shared/ReusableSlider";
 import { SwiperSlide } from "swiper/react";
 import ReelCard from "@/components/shared/ReelCard";
 import CategoryTabs from "@/components/shared/CategoryTabs";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 
-function Work() {
+function Work({ videos }: { videos: IGoogleDriveVideo[] }) {
   return (
     <div className="pt-32 pb-20">
       <div className="container">
@@ -39,8 +40,6 @@ function Work() {
           </div>
         </div>
 
-        <CategoryTabs />
-
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,13 +49,11 @@ function Work() {
           <ReusableSlider
             className="mx-auto w-[95%] xl:w-[100%] mt-4 sm:mt-6"
             renderSlides={() => {
-              return Array(8)
-                .fill("")
-                .map((_, ix) => (
-                  <SwiperSlide key={ix}>
-                    <ReelCard speaker={ix + 1} className="hover:scale-95" />
-                  </SwiperSlide>
-                ));
+              return videos.map((video, ix) => (
+                <SwiperSlide key={video.id}>
+                  <ReelCard speaker={ix + 1} reel={video} className="hover:scale-95" />
+                </SwiperSlide>
+              ));
             }}
           />
         </motion.div>

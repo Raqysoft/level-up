@@ -4,17 +4,19 @@ import Services from "@/components/home/Services";
 import Stats from "@/components/home/Stats";
 import Testimonials from "@/components/home/Testimonials";
 import Work from "@/components/home/Work";
+import { fetchAllVideos } from "@/lib/fetch-drive-videos";
 import React from "react";
 
-function Home() {
+async function Home() {
+  const videos = await fetchAllVideos();
   return (
     <div className="overflow-x-hidden">
-      <Hero />
-      <Stats />
+      <Hero videos={videos} />
+      <Stats videos={videos} />
       <Services />
-      <Work />
+      <Work videos={videos.sort(() => Math.random() - 0.5).slice(0, 8)} />
       <Process />
-      <Testimonials />
+      <Testimonials videos={videos} />
     </div>
   );
 }

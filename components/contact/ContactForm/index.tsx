@@ -20,6 +20,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 
 // Zod validation schema
 const contactFormSchema = z.object({
@@ -69,7 +70,7 @@ const contactFormSchema = z.object({
 
 type FormValues = z.infer<typeof contactFormSchema>;
 
-function ContactForm() {
+function ContactForm({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
   const form = useForm<FormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -134,10 +135,10 @@ function ContactForm() {
           className="order-2 md:order-1 flex-center gap-4 h-[840px] bg-gradient-to-b from-violet-700 from-5% to-violet-950 overflow-hidden rounded-2xl p-6"
         >
           <div className="min-w-[450px]">
-            <InfiniteScrollGallery />
+            <InfiniteScrollGallery videos={videos} />
           </div>
           <div className="min-w-[450px]">
-            <InfiniteScrollGallery />
+            <InfiniteScrollGallery videos={videos} />
           </div>
         </motion.div>
 

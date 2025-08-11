@@ -14,11 +14,13 @@ function ReelCard({
   className,
   reel,
 }: {
-  speaker: number;
+  speaker?: number;
   className?: string;
   reel?: IGoogleDriveVideo;
 }) {
-  if (!reel?.thumbnailLink) return null;
+  if (!reel?.thumbnailLink)
+    return <div className="bg-red-200">HAS NO THUMBNAIL</div>;
+
   const thumbnail = reel?.thumbnailLink.replace(/=s\d+/, "=s800") || "";
   return (
     <Dialog>

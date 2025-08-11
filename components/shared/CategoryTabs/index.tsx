@@ -1,15 +1,21 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { CATEGORIES } from "@/constants/categories";
+import { IGoogleDriveCategory } from "@/types/google-drive";
+import { cn } from "@/lib/utils";
 
-export type CategoryType = (typeof CATEGORIES)[0];
 function CategoryTabs({
+  categories,
+  activeCategory,
   onChange,
 }: {
-  onChange?: (cat: CategoryType) => void;
+  categories: IGoogleDriveCategory[];
+  activeCategory?: string;
+  onChange?: (value: string) => void;
 }) {
-  const [activeTab, setActiveTab] = useState<CategoryType>(CATEGORIES[0]);
+  const [activeTab, setActiveTab] = useState<string>(
+    activeCategory || categories[0]?.id || ""
+  );
 
   return (
     <motion.div
@@ -17,29 +23,29 @@ function CategoryTabs({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: 0.4 }}
-      className="w-[80%] max-w-4xl mx-auto grid md:grid-cols-3 gap-4 md:gap-12"
+      className="w-[80%] max-w-4xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-12"
     >
-      {CATEGORIES.map((tab, index) => (
+      {categories.map((tab, ix) => (
         <div
-          key={index}
+          key={tab.id}
           onClick={() => {
-            setActiveTab(tab);
-            onChange?.(tab);
+            setActiveTab(tab.id);
+            onChange?.(tab.id);
           }}
-          className="flex flex-col items-center text-center cursor-pointer"
+          className={cn(
+            "flex flex-col items-center text-center cursor-pointer"
+          )}
         >
           <span
             className={`text- font-medium transition-colors ${
-              activeTab.value === tab.value ? "text-[#D4FF00]" : "text-gray-400"
+              activeTab === tab.id ? "text-[#D4FF00]" : "text-gray-400"
             }`}
           >
-            {tab.label}
+            {tab.name}
           </span>
           <div
             className={`mt-2 w-[115%] transition-colors duration-300 ${
-              activeTab.value === tab.value
-                ? "h-1 bg-[#D4FF00]"
-                : "h-0.5 bg-gray-800"
+              activeTab === tab.id ? "h-1 bg-[#D4FF00]" : "h-0.5 bg-gray-800"
             }`}
           />
         </div>

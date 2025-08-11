@@ -4,8 +4,13 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { GripVertical } from "lucide-react";
 import ReelCard from "@/components/shared/ReelCard";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 
-function ReelComparision() {
+function ReelComparision({
+  selectedReel,
+}: {
+  selectedReel: IGoogleDriveVideo;
+}) {
   const [inset, setInset] = useState<number>(50);
   const [onMouseDown, setOnMouseDown] = useState<boolean>(false);
 
@@ -63,12 +68,15 @@ function ReelComparision() {
           }}
         >
           <div className="absolute inset-0 size-full bg-zinc-800 w-full h-full"></div>
-          <ReelCard speaker={3} className="w-full h-full hover:scale-100" />
+          <ReelCard
+            reel={selectedReel}
+            className="w-full h-full hover:scale-100"
+          />
         </div>
         <div className="absolute left-0 top-0 w-full h-full aspect-video rounded-2xl select-none border">
           <div className="absolute inset-0 size-full bg-zinc-700 w-full h-full"></div>
           <ReelCard
-            speaker={3}
+            reel={selectedReel}
             className="w-full h-full hover:scale-100 grayscale-100"
           />
         </div>

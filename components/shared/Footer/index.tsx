@@ -6,13 +6,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import ReelsFootage from "./reels-footage";
+import { IGoogleDriveVideo } from "@/types/google-drive";
 
-function Footer() {
+function Footer({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
   return (
     <footer className="py-16 flex flex-col items-center relative overflow-hidden">
       <div className="absolute z-10 top-0 left-1/2 -translate-x-1/2 h-[30vh] w-[120%] bg-background blur-3xl"></div>
       <div className="w-[1800px] relative -bottom-48 -mt-[470px]">
-        <ReelsFootage />
+        <ReelsFootage videos={videos} />
       </div>
       <div className="container mx-auto px-4">
         {/* Main Content */}
@@ -42,9 +43,11 @@ function Footer() {
               engaged audiences, and sell more — all through Reels that actually
               perform.
             </p>
-            <Button className="" size="lg">
-              Book Your Free Call
-            </Button>
+            <Link href={"/contact"}>
+              <Button className="" size="lg">
+                Book Your Free Call
+              </Button>
+            </Link>
           </motion.div>
         </div>
 
