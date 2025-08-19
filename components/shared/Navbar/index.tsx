@@ -63,8 +63,13 @@ function Navbar() {
           )}
         >
           <div className="flex-center gap-4">
-            <div className="relative h-8 w-[120px]">
-              <Image src="/images/full-logo.png" alt="level-up" fill />
+            <div className="relative h-10 w-[120px]">
+              <Image
+                src="/images/levelup-1.png"
+                alt="level-up"
+                className="object-cover"
+                fill
+              />
             </div>
 
             <div className="h-6 w-[1px] bg-primary/50 mr-1"></div>

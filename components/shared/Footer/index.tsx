@@ -61,10 +61,10 @@ function Footer({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
         >
           <div>
             <Image
-              src={"/images/full-logo.png"}
+              src={"/images/levelup-1.png"}
               alt="level up"
               width={150}
-              height={150}
+              height={100}
             />
           </div>
           {/* Solutions Column */}
