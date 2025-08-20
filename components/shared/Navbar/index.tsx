@@ -63,7 +63,7 @@ function Navbar() {
           )}
         >
           <div className="flex-center gap-4">
-            <div className="relative h-9 w-[120px]">
+            <div className="relative h-10 w-[120px]">
               <Image
                 src="/images/levelup-1.png"
                 alt="level-up"
