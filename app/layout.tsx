@@ -59,7 +59,7 @@ export default async function RootLayout({
       >
         <Suspense fallback={<Loading />}>
           <Navbar />
-          <BodyLines cols={4} />
+          {/* <BodyLines cols={4} /> */}
           <main className="relative">
             {children}
             <Toaster />
