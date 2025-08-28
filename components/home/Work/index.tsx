@@ -6,8 +6,9 @@ import { SwiperSlide } from "swiper/react";
 import ReelCard from "@/components/shared/ReelCard";
 import CategoryTabs from "@/components/shared/CategoryTabs";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
-function Work({ videos }: { videos: IGoogleDriveVideo[] }) {
+function Work({ videos }: { videos: ICloudinaryVid[] }) {
   return (
     <div className="pt-32 pb-20">
       <div className="container">
@@ -51,7 +52,11 @@ function Work({ videos }: { videos: IGoogleDriveVideo[] }) {
             renderSlides={() => {
               return videos.map((video, ix) => (
                 <SwiperSlide key={video.id}>
-                  <ReelCard speaker={ix + 1} reel={video} className="hover:scale-95" />
+                  <ReelCard
+                    speaker={ix + 1}
+                    reel={video}
+                    className="hover:scale-95"
+                  />
                 </SwiperSlide>
               ));
             }}

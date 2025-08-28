@@ -3,11 +3,12 @@ import { BadgeCheck, Gauge, TrendingUp } from "lucide-react";
 import React from "react";
 import { motion } from "framer-motion";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
 function ScatteredReels({
   featuredReels,
 }: {
-  featuredReels: IGoogleDriveVideo[];
+  featuredReels: ICloudinaryVid[];
 }) {
   return (
     <motion.div

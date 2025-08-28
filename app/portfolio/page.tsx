@@ -1,22 +1,17 @@
 import Hero from "@/components/portfolio/Hero";
 import ReelsGrid from "@/components/portfolio/ReelsGrid";
-import {
-  fetchAllVideos,
-  fetchCategorizedVideos,
-  fetchFolderVideos,
-  fetchGoogleDriveFolders,
-} from "@/lib/fetch-drive-videos";
-import { IGoogleDriveVideo } from "@/types/google-drive";
+import { REELS } from "@/constants/reels";
 import React from "react";
 
 async function Portfolio() {
-  const flatVideos = await fetchAllVideos();
-  const categorizedVideos = await fetchCategorizedVideos();
+  // const flatVideos = await fetchAllVideos();
+  // const flatVideos = await fetchCloudinaryVideos();
+  // const categorizedVideos = await fetchCategorizedVideos();
 
   return (
     <div>
-      <Hero reels={flatVideos} />
-      <ReelsGrid reels={categorizedVideos} />
+      <Hero reels={REELS} />
+      <ReelsGrid reels={REELS} />
     </div>
   );
 }

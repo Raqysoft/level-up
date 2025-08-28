@@ -21,6 +21,7 @@ import { z } from "zod";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
 // Zod validation schema
 const contactFormSchema = z.object({
@@ -70,7 +71,7 @@ const contactFormSchema = z.object({
 
 type FormValues = z.infer<typeof contactFormSchema>;
 
-function ContactForm({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
+function ContactForm({ videos = [] }: { videos: ICloudinaryVid[] }) {
   const form = useForm<FormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {

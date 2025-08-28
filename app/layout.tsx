@@ -10,6 +10,8 @@ import WhatsAppPopup from "@/components/shared/WhatsAppPopup";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { fetchAllVideos } from "@/lib/fetch-drive-videos";
+import { fetchCloudinaryVideos } from "@/lib/fetch-cloudinary-videos";
+import { REELS } from "@/constants/reels";
 
 const clashDisplay = localFont({
   src: [
@@ -48,7 +50,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const videos = await fetchAllVideos();
+  // const videos = await fetchAllVideos();
+  // const videos = await fetchCloudinaryVideos();
   return (
     <html lang="en">
       <body
@@ -62,7 +65,7 @@ export default async function RootLayout({
             <Toaster />
             <WhatsAppPopup />
           </main>
-          <Footer videos={videos} />
+          <Footer videos={REELS} />
         </Suspense>
       </body>
     </html>

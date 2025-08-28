@@ -3,8 +3,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import ScatteredReels from "./scattered-reels";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
-function Hero({ featuredReels }: { featuredReels: IGoogleDriveVideo[] }) {
+function Hero({ featuredReels }: { featuredReels: ICloudinaryVid[] }) {
   return (
     <div className="relative pb-32 overflow-x-hidden">
       <motion.div

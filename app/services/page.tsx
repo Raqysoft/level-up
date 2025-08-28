@@ -7,10 +7,12 @@ import StickyTextReveal from "@/components/shared/StickyTextReveal";
 import Hero from "@/components/services/Hero";
 import UseCases from "@/components/services/UseCases";
 import { fetchAllVideos } from "@/lib/fetch-drive-videos";
+import { REELS } from "@/constants/reels";
 
 async function Services() {
-  const allVideos = await fetchAllVideos();
-  const sampleVideos = allVideos.sort(() => Math.random() - 0.5).slice(0, 6);
+  // const allVideos = await fetchAllVideos();
+  // const sampleVideos = allVideos.sort(() => Math.random() - 0.5).slice(0, 6);
+  const sampleVideos = REELS;
 
   return (
     <div>

@@ -9,8 +9,9 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 // import "swiper/css/autoplay";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
-function Testimonials({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
+function Testimonials({ videos = [] }: { videos?: ICloudinaryVid[] }) {
   return (
     <section className="bg-foreground py-20 relative overflow-hidden">
       <div className="absolute inset-0 size-full grid grid-cols-4">
@@ -70,8 +71,8 @@ function Testimonials({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
                     key={`${testimonial.id}-${index}`}
                     className="w-[90vw] md:w-[700px]"
                   >
-                    <TestimonialCard 
-                      testimonial={testimonial} 
+                    <TestimonialCard
+                      testimonial={testimonial}
                       video={videos[videoIndex]}
                     />
                   </SwiperSlide>

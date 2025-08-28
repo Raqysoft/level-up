@@ -5,11 +5,15 @@ import ReelCard from "@/components/shared/ReelCard";
 import Image from "next/image";
 import { IGoogleDriveVideo } from "@/types/google-drive";
 import { Play } from "lucide-react";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
 const SLIDER_ITEMS = 8;
-function Hero({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
+function Hero({ videos = [] }: { videos: ICloudinaryVid[] }) {
   // Get a random video for the hero section
-  const heroVideo = videos.length > 0 ? videos[Math.floor(Math.random() * videos.length)] : null;
+  const heroVideo =
+    videos.length > 0
+      ? videos[Math.floor(Math.random() * videos.length)]
+      : null;
 
   return (
     <div className="relative">

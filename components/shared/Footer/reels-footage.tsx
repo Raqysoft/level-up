@@ -2,16 +2,17 @@ import React from "react";
 import ReelCard from "../ReelCard";
 import { motion } from "framer-motion";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
 interface IColData {
-  videos: IGoogleDriveVideo[];
+  videos: ICloudinaryVid[];
   delay?: number;
 }
 
-function ReelsFootage({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
+function ReelsFootage({ videos = [] }: { videos?: ICloudinaryVid[] }) {
   // Ensure we have enough videos by repeating the array if necessary
   const extendedVideos = [...videos, ...videos].slice(0, 15);
-  
+
   return (
     <div className="min-h-[140vh] grid grid-cols-10 grid-rows-1 gap-3">
       {/* Left */}
@@ -24,7 +25,10 @@ function ReelsFootage({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
       <FifthCol videos={[extendedVideos[7]]} delay={0.5} />
       <FourthCol videos={[extendedVideos[8]]} delay={0.6} />
       <ThirdCol videos={[extendedVideos[9]]} delay={0.7} />
-      <SecondCol videos={[extendedVideos[10], extendedVideos[11]]} delay={0.8} />
+      <SecondCol
+        videos={[extendedVideos[10], extendedVideos[11]]}
+        delay={0.8}
+      />
       <FirstCol videos={[extendedVideos[12], extendedVideos[13]]} delay={0.9} />
     </div>
   );

@@ -1,5 +1,6 @@
 import ReelCard from "@/components/shared/ReelCard";
 import { TESTIMONIALS } from "@/constants/testimonials";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 import { IGoogleDriveVideo } from "@/types/google-drive";
 import Image from "next/image";
 
@@ -8,7 +9,7 @@ export function TestimonialCard({
   video,
 }: {
   testimonial: (typeof TESTIMONIALS)[0];
-  video?: IGoogleDriveVideo;
+  video: ICloudinaryVid;
 }) {
   return (
     <div className="relative bg-[#E0AAFE] backdrop-blur-md rounded-lg p-6 overflow-hidden w-full flex-shrink-0 mx-3">

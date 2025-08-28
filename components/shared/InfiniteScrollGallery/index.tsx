@@ -3,13 +3,14 @@
 import { motion } from "framer-motion";
 import ReelCard from "../ReelCard";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
 export default function InfiniteScrollGallery({
   inverseScale = false,
   videos = [],
 }: {
   inverseScale?: boolean;
-  videos?: IGoogleDriveVideo[];
+  videos?: ICloudinaryVid[];
 }) {
   // Create two arrays of videos for the columns
   const videos1 = videos.slice(0, Math.ceil(videos.length / 2));

@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReelCard from "@/components/shared/ReelCard";
 import Image from "next/image";
+import { REELS } from "@/constants/reels";
 
 function Stats() {
   const [isMount, setIsMount] = useState(false);
@@ -64,6 +65,7 @@ function Stats() {
             >
               <ReelCard
                 speaker={i}
+                reel={REELS[i % REELS.length]}
                 className="h-[300px] min-w-48 bg-primary/50"
               />
             </motion.div>
@@ -86,6 +88,7 @@ function Stats() {
                 <div className="absolute-center bg-primary/40 w-[110%] h-[85%] group-hover:size-[90%] rounded-xl group-hover:rounded-3xl duration-300"></div>
                 <ReelCard
                   speaker={4}
+                  reel={REELS[4 % REELS.length]}
                   className="h-[450px] min-w-72 sm:min-w-80 bg-primary/50 rounded-3xl shadow-primary border-2 border-white hover:scale-100"
                 />
               </motion.div>
@@ -108,6 +111,7 @@ function Stats() {
             >
               <ReelCard
                 speaker={i}
+                reel={REELS[i % REELS.length]}
                 className="h-[300px] min-w-48 bg-primary/50"
               />
             </motion.div>

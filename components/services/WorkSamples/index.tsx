@@ -6,8 +6,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import React from "react";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
-const ReelsCols = ({ videos }: { videos: IGoogleDriveVideo[] }) => (
+const ReelsCols = ({ videos }: { videos: ICloudinaryVid[] }) => (
   <div className="space-y-4">
     {videos.map((video, ix) => (
       <motion.div
@@ -22,7 +23,7 @@ const ReelsCols = ({ videos }: { videos: IGoogleDriveVideo[] }) => (
   </div>
 );
 
-function WorkSamples({ videos }: { videos: IGoogleDriveVideo[] }) {
+function WorkSamples({ videos }: { videos: ICloudinaryVid[] }) {
   // Split videos into three columns
   const colSize = Math.ceil(videos.length / 3);
   const col1 = videos.slice(0, colSize);

@@ -5,11 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { GripVertical } from "lucide-react";
 import ReelCard from "@/components/shared/ReelCard";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
 function ReelComparision({
   selectedReel,
 }: {
-  selectedReel: IGoogleDriveVideo;
+  selectedReel: ICloudinaryVid;
 }) {
   const [inset, setInset] = useState<number>(50);
   const [onMouseDown, setOnMouseDown] = useState<boolean>(false);

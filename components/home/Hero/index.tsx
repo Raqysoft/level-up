@@ -9,8 +9,9 @@ import { motion } from "framer-motion";
 import { PARTNERS } from "@/constants/partners";
 import Link from "next/link";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
-function HomeHero({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
+function HomeHero({ videos = [] }: { videos?: ICloudinaryVid[] }) {
   return (
     <div className="relative min-h-screen">
       <div className="container relative">

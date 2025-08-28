@@ -5,9 +5,10 @@ import ReelCard from "@/components/shared/ReelCard";
 import Image from "next/image";
 import { REELS } from "@/constants/reels";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
 const SLIDER_ITEMS = 8;
-function Hero({ reels }: { reels: IGoogleDriveVideo[] }) {
+function Hero({ reels }: { reels: ICloudinaryVid[] }) {
   return (
     <div className="relative overflow-hidden">
       <motion.div

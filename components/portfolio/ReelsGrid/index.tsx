@@ -8,24 +8,43 @@ import {
   IGoogleDriveCategorizedVideos,
   IGoogleDriveCategory,
 } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
-function ReelsGrid({ reels }: { reels: IGoogleDriveCategorizedVideos }) {
+function ReelsGrid({ reels }: { reels: ICloudinaryVid[] }) {
   const [activeTab, setActiveTab] = useState<string>("all");
 
-  const categories: IGoogleDriveCategory[] = [
-    { id: "all", name: "All Videos" },
-    ...Object.entries(reels).map(([key, value]) => ({
-      id: key,
-      name: value.folderName,
-    })),
+  // const categories: IGoogleDriveCategory[] = [
+  //   { id: "all", name: "All Videos" },
+  //   ...Object.entries(reels).map(([key, value]) => ({
+  //     id: key,
+  //     name: value.folderName,
+  //   })),
+  // ];
+
+  const categories = [
+    {
+      id: "All Videos",
+      name: "All Videos",
+    },
+    {
+      id: "Editing and Effects",
+      name: "Editing and Effects",
+    },
+    {
+      id: "Content Strategy",
+      name: "Content Strategy",
+    },
+    {
+      id: "Performance Tracking",
+      name: "Performance Tracking",
+    },
   ];
 
-  const filteredReels = useMemo(() => {
-    if (activeTab === "all") {
-      return Object.values(reels).flatMap((category) => category.videos);
-    }
-    return reels[activeTab]?.videos || [];
-  }, [reels, activeTab]);
+  // const filteredReels = useMemo(() => {
+  //   if (activeTab === "all")
+  //     return Object.values(reels).flatMap((category) => category.videos);
+  //   return reels[activeTab]?.videos || [];
+  // }, [reels, activeTab]);
 
   return (
     <div className="container space-y-14 pt-20 pb-40">
@@ -35,7 +54,7 @@ function ReelsGrid({ reels }: { reels: IGoogleDriveCategorizedVideos }) {
         onChange={setActiveTab}
       />
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {filteredReels.map((reel, ix) => (
+        {reels.map((reel, ix) => (
           <motion.div
             key={reel.id}
             initial={{ opacity: 0, y: 40 }}

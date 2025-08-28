@@ -2,11 +2,12 @@ import SectionHeader from "@/components/shared/SectionHeader";
 import React from "react";
 import { ReelComparision } from "./reel-comparision";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
 function DifferenceSection({
   selectedReel,
 }: {
-  selectedReel: IGoogleDriveVideo;
+  selectedReel: ICloudinaryVid;
 }) {
   return (
     <section className="pt-20 pb-24">

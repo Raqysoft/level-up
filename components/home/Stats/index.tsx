@@ -11,8 +11,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { cn } from "@/lib/utils";
 import { IGoogleDriveVideo } from "@/types/google-drive";
+import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
 
-function Stats({ videos = [] }: { videos?: IGoogleDriveVideo[] }) {
+function Stats({ videos = [] }: { videos?: ICloudinaryVid[] }) {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
