@@ -49,59 +49,141 @@ function Navbar() {
       <motion.div
         initial={{ y: -80 }}
         animate={{ y: 0 }}
+        transition={{ 
+          type: "spring", 
+          stiffness: 300, 
+          damping: 30,
+          duration: 0.6
+        }}
+        layout
+        layoutRoot
         className={cn(
-          "fixed z-50 px-4 py-2 rounded-full left-1/2 -translate-x-1/2 duration-300",
+          "fixed z-50 px-4 py-2 rounded-full left-1/2 -translate-x-1/2 transition-all ease-in-out duration-300",
           isScrolled
-            ? "top-4 border bg-black/10 border-white/20 backdrop-blur-md"
-            : "top-2"
+            ? "top-4 border bg-black/10 border-white/20 backdrop-blur-md duration-500"
+            : "top-2 "
         )}
       >
         <motion.div
-          className={cn(
-            "flex-between duration-700",
-            scrollDir === "up" ? "gap-4 md:gap-6 lg:gap-40" : "gap-4 md:gap-6"
-          )}
+          animate={{
+            gap: scrollDir === "up" ? "2.5rem" : "1rem"
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 400,
+            damping: 40,
+            duration: 0.8
+          }}
+          className="flex-between"
+          layout
         >
           <div className="flex-center gap-4">
-            <div className="relative h-10 w-[120px]">
+            <motion.div 
+              className="relative h-10 w-[120px]"
+              animate={{
+                scale: isScrolled ? 0.9 : 1
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30
+              }}
+            >
               <Image
                 src="/images/levelup-1.png"
                 alt="level-up"
                 className="object-cover"
                 fill
               />
-            </div>
+            </motion.div>
 
-            <div className="h-6 w-[1px] bg-primary/50 mr-1"></div>
+            <motion.div 
+              className="h-6 w-[1px] bg-primary/50 mr-1"
+              animate={{
+                opacity: scrollDir === "up" ? 1 : 0.5,
+                scaleY: scrollDir === "up" ? 1 : 0.7
+              }}
+              transition={{
+                duration: 0.4,
+                ease: "easeInOut"
+              }}
+            ></motion.div>
 
-            {/* Desktop nav links */}
+            {/* Desktop nav links with smooth width transitions */}
             <AnimatePresence>
               {scrollDir === "up" && (
-                <motion.nav
-                  className="hidden md:flex flex-center gap-4"
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
+                <motion.div
+                  layoutId="navbar-links"
+                  className="overflow-hidden"
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{ width: "auto", opacity: 1 }}
+                  exit={{ width: 0, opacity: 0 }}
+                  transition={{
+                    width: { 
+                      duration: 0.5, 
+                      ease: "easeInOut",
+                      type: "tween"
+                    },
+                    opacity: { 
+                      duration: 0.3, 
+                      ease: "easeInOut"
+                    },
+                    layout: {
+                      duration: 0.5,
+                      ease: "easeInOut"
+                    }
+                  }}
                 >
-                  {NAV_LINKS.map(({ label, href }, ix) => (
-                    <Link
-                      key={ix}
-                      href={href}
-                      className={cn(
-                        "opacity-70",
-                        isActive(href) && "opacity-100"
-                      )}
-                    >
-                      {label}
-                    </Link>
-                  ))}
-                </motion.nav>
+                  <motion.nav
+                    className="hidden md:flex flex-center gap-4 whitespace-nowrap px-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ 
+                      duration: 0.3,
+                      delay: 0.2,
+                      staggerChildren: 0.05
+                    }}
+                  >
+                    {NAV_LINKS.map(({ label, href }, ix) => (
+                      <motion.div
+                        key={ix}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ 
+                          delay: 0.1 + ix * 0.05,
+                          duration: 0.3,
+                          ease: "easeOut"
+                        }}
+                      >
+                        <Link
+                          href={href}
+                          className={cn(
+                            "opacity-70 transition-all duration-300 hover:opacity-100",
+                            isActive(href) && "opacity-100"
+                          )}
+                        >
+                          {label}
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </motion.nav>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>
 
           {/* Desktop buttons */}
-          <div className="hidden md:flex flex-center gap-2">
+          <motion.div
+            className="hidden md:flex flex-center gap-2"
+            animate={{
+              scale: scrollDir === "up" ? 1 : 0.95,
+              opacity: scrollDir === "up" ? 1 : 0.8
+            }}
+            transition={{
+              duration: 0.4,
+              ease: "easeInOut"
+            }}
+          >
             <Link href={"/portfolio"}>
               <Button variant={"outline"} icon={<ArrowRight />} dir="rtl">
                 See Our Work
@@ -110,13 +192,18 @@ function Navbar() {
             <Link href={"/contact"}>
               <Button>Let's Talk</Button>
             </Link>
-          </div>
+          </motion.div>
 
           {/* Mobile menu toggle */}
           <div className="md:hidden">
-            <button onClick={() => setMobileOpen(!mobileOpen)} className="mt-2">
+            <motion.button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="mt-2"
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.1 }}
+            >
               <Menu />
-            </button>
+            </motion.button>
           </div>
         </motion.div>
       </motion.div>
@@ -128,32 +215,61 @@ function Navbar() {
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ duration: 0.3 }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 30,
+              duration: 0.4
+            }}
             className="fixed top-0 right-0 h-full w-[95%] max-w-2xl bg-background/50 backdrop-blur-2xl z-50 p-6 shadow-lg flex flex-col gap-6"
           >
             <div className="flex justify-end">
-              <button onClick={() => setMobileOpen(false)}>
+              <motion.button
+                onClick={() => setMobileOpen(false)}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.1 }}
+              >
                 <X />
-              </button>
+              </motion.button>
             </div>
 
-            <nav className="flex flex-col gap-4">
+            <motion.nav
+              className="flex flex-col gap-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.3 }}
+            >
               {NAV_LINKS.map(({ label, href }, ix) => (
-                <Link
+                <motion.div
                   key={ix}
-                  href={href}
-                  onClick={() => setMobileOpen(false)}
-                  className={cn(
-                    "text-lg",
-                    isActive(href) ? "font-semibold text-primary" : ""
-                  )}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    delay: 0.1 + ix * 0.05,
+                    duration: 0.3,
+                    ease: "easeOut"
+                  }}
                 >
-                  {label}
-                </Link>
+                  <Link
+                    href={href}
+                    onClick={() => setMobileOpen(false)}
+                    className={cn(
+                      "text-lg transition-colors duration-200",
+                      isActive(href) ? "font-semibold text-primary" : ""
+                    )}
+                  >
+                    {label}
+                  </Link>
+                </motion.div>
               ))}
-            </nav>
+            </motion.nav>
 
-            <div className="flex flex-col gap-2 mt-auto">
+            <motion.div
+              className="flex flex-col gap-2 mt-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.3 }}
+            >
               <Link href={"/portfolio"}>
                 <Button
                   variant={"outline"}
@@ -170,7 +286,7 @@ function Navbar() {
                   Let's Talk
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
