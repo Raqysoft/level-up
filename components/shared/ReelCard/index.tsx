@@ -73,7 +73,7 @@ function ReelCard({
         >
           <Image
             src={reel.thumbnail}
-            alt={reel.displayName}
+            alt={`Reel: ${reel.displayName}`}
             className="object-cover"
             fill
             priority

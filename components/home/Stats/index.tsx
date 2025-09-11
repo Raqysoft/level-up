@@ -12,10 +12,25 @@ import "swiper/css/pagination";
 import { cn } from "@/lib/utils";
 import { IGoogleDriveVideo } from "@/types/google-drive";
 import { ICloudinaryVid } from "@/lib/fetch-cloudinary-videos";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function Stats({ videos = [] }: { videos?: ICloudinaryVid[] }) {
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const isPrev = activeIndex > 0;
+  const isNext = activeIndex < videos.length - 1;
+  const swiperRef = useRef<any>(null);
+
+  const handlePrevSlide = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev();
+    }
+  };
+
+  const handleNextSlide = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
+  };
 
   return (
     <motion.div
@@ -24,9 +39,8 @@ function Stats({ videos = [] }: { videos?: ICloudinaryVid[] }) {
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="container relative z-10 py-28"
-      ref={sectionRef}
     >
-      <motion.div className="rounded-3xl bg-foreground flex flex-col justify-center gap-16 overflow-hidden py-12 px-4 md:px-8">
+      <motion.div className="rounded-3xl bg-foreground w-full flex flex-col justify-center gap-16 overflow-hidden py-12 px-4 md:px-8">
         {/* Swiper Slider */}
         <div className="relative w-full">
           <Swiper
@@ -39,8 +53,6 @@ function Stats({ videos = [] }: { videos?: ICloudinaryVid[] }) {
             speed={600}
             breakpoints={{
               320: { spaceBetween: 20 },
-              640: { spaceBetween: 25 },
-              768: { spaceBetween: 30 },
               1024: { spaceBetween: 10 },
             }}
             onSlideChange={(swiper) => {
@@ -48,6 +60,7 @@ function Stats({ videos = [] }: { videos?: ICloudinaryVid[] }) {
             }}
             onSwiper={(swiper) => {
               setActiveIndex(swiper.realIndex);
+              swiperRef.current = swiper;
             }}
             className="!overflow-visible !py-12"
           >
@@ -55,10 +68,11 @@ function Stats({ videos = [] }: { videos?: ICloudinaryVid[] }) {
               const isActive = activeIndex === index;
               return (
                 <SwiperSlide
-                  key={video.id}
+                  key={index}
                   className={cn(
-                    " !p-0 !h-[430px] flex justify-center items-center",
-                    isActive ? "z-40 !w-80" : "!w-72"
+                    "!p-0 !w-80 !h-[430px] flex justify-center items-center",
+                    // isActive ? "z-40 !w-80" : "!w-72"
+                    isActive && "!px-6 md:!px-8 lg:!px-12"
                   )}
                 >
                   <div className="relative w-full h-full flex justify-center items-center">
@@ -74,10 +88,7 @@ function Stats({ videos = [] }: { videos?: ICloudinaryVid[] }) {
                         duration: 0.6,
                         ease: [0.25, 0.46, 0.45, 0.94],
                       }}
-                      className={cn(
-                        "relative w-full h-[430px] transform-gpu",
-                        isActive && "mx-8"
-                      )}
+                      className={cn("relative w-full h-[430px] transform-gpu")}
                       style={{
                         transformStyle: "preserve-3d",
                       }}
@@ -109,6 +120,31 @@ function Stats({ videos = [] }: { videos?: ICloudinaryVid[] }) {
               );
             })}
           </Swiper>
+
+          {/* Mobile Control Buttons */}
+          <div className="flex justify-center items-center gap-4 mt-6 md:hidden">
+            <button
+              onClick={handlePrevSlide}
+              className={cn(
+                "size-12 bg-secondary border border-black/20 text-background flex-center rounded-full shadow-md transition-all duration-300 cursor-pointer",
+                !isPrev && "opacity-50 cursor-not-allowed"
+              )}
+              aria-label="Previous slide"
+            >
+              <ChevronLeft />
+            </button>
+
+            <button
+              onClick={handleNextSlide}
+              className={cn(
+                "size-12 bg-secondary border border-black/20 text-background flex-center rounded-full shadow-md transition-all duration-300 cursor-pointer",
+                !isNext && "opacity-50 cursor-not-allowed"
+              )}
+              aria-label="Next slide"
+            >
+              <ChevronRight />
+            </button>
+          </div>
         </div>
 
         {/* Stats Section */}
@@ -121,19 +157,19 @@ function Stats({ videos = [] }: { videos?: ICloudinaryVid[] }) {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="relative text-center"
           >
-            <Image
-              src="/svgs/engagement.svg"
-              alt="engagement"
-              width={40}
-              height={40}
-              className="absolute -bottom-2 -right-4 md:-bottom-4 md:-right-6"
-            />
-            <div className="text-4xl md:text-5xl font-clash-display font-bold mb-2">
+            <div className="text-4xl relative z-10 md:text-5xl font-clash-display font-bold mb-2">
               +230%
             </div>
             <p className="text-base md:text-lg font-light opacity-90">
               Engagement lift
             </p>
+            <Image
+              src="/svgs/engagement.svg"
+              alt="engagement"
+              width={40}
+              height={40}
+              className="absolute bottom-4 -right-8 sm:-bottom-2 sm:-right-4 md:-bottom-4 md:-right-6 z-0"
+            />
           </motion.div>
 
           {/* Views Stat */}
@@ -167,19 +203,19 @@ function Stats({ videos = [] }: { videos?: ICloudinaryVid[] }) {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="relative text-center"
           >
-            <Image
-              src="/svgs/curved-path.svg"
-              alt="brands served"
-              width={40}
-              height={40}
-              className="absolute bottom-2 left-16 md:bottom-4 md:left-20 lg:left-36"
-            />
             <div className="text-4xl md:text-5xl font-clash-display font-bold mb-2">
               60+
             </div>
             <p className="text-base md:text-lg font-light opacity-90">
               Brands & Creators Served
             </p>
+            <Image
+              src="/svgs/curved-path.svg"
+              alt="brands served"
+              width={40}
+              height={40}
+              className="absolute left-4 bottom-6 sm:bottom-2 sm:left-16 md:bottom-4 md:left-20 lg:left-36"
+            />
           </motion.div>
         </div>
       </motion.div>

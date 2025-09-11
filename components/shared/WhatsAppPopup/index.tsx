@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
+const WHATSAPP_MESSAGE = "Hello, I would like to get in touch with you";
+
 function WhatsAppPopup() {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -12,13 +14,8 @@ function WhatsAppPopup() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > lastScrollY) {
-        // Scrolling down
-        setShow(false);
-      } else {
-        // Scrolling up
-        setShow(true);
-      }
+      if (currentScrollY > lastScrollY) setShow(false);
+      else setShow(true);
 
       setLastScrollY(currentScrollY);
     };
@@ -41,7 +38,7 @@ function WhatsAppPopup() {
         bg-green-400/10`}
     >
       <Link
-        href="https://wa.me/+201018192961?text=Let's make something great together"
+        href={`https://wa.me/61431193874?text=${WHATSAPP_MESSAGE}`}
         target="_blank"
       >
         <div className="size-16 sm:size-20 bg-green-400/10 flex-center rounded-full">
